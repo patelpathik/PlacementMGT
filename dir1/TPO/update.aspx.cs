@@ -22,7 +22,7 @@ public partial class dir1_TPO_update : System.Web.UI.Page
                 string sig_id = Request.QueryString["ref"].ToString();
 
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\PlacementMGT\placement_management.mdf; Integrated Security = True; Connect Timeout = 3000";
+                con.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF; Integrated Security = True; Connect Timeout = 3000";
                 con.Open();
                 string upd1 = "update signup set sig_id_no='" + clg_id + "', sig_email='" + email + "', sig_mobile='" + contact + "', br_id='" + br_id + "', sig_sem='" + sem + "' where sig_id='" + sig_id + "'";
                 SqlCommand cmd = new SqlCommand(upd1, con);

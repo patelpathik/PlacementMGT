@@ -20,7 +20,7 @@ protected void Page_Load(object sender, EventArgs e)
             Response.Redirect("../../Login.aspx");
         }
         String uid = Session["userid"].ToString();
-        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         conn.Open();
         string query = "select * from tpo WHERE tpo_id='" + uid + "'";
         SqlDataAdapter da = new SqlDataAdapter(query, conn);

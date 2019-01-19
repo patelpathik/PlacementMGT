@@ -13,7 +13,7 @@ public partial class dir2_student_Default : System.Web.UI.Page
     protected void btnpass_Click(object sender, EventArgs e)
     {
         String uid = Session["userid"].ToString();
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         con.Open();
         string checkuser = "select count(*) from company where com_email = '" + txtemail.Text + "' AND com_pwd = '" + txtpass.Text + "' WHERE com_id=" +uid;
         SqlCommand cmd1 = new SqlCommand(checkuser, con);

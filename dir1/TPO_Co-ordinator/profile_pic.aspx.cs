@@ -24,7 +24,7 @@ public partial class dir1_TPO_Default2 : System.Web.UI.Page
         try
         {
             String uid = Session["userid"].ToString();
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             //string insertQuery = "insert into tpo (imagename,imagepath) values (@imagename, @imagepath);
             //string insertimg = "update tpo SET imagename =  where tpo_id = " + uid;

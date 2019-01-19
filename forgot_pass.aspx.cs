@@ -21,7 +21,7 @@ public partial class forgot_pass : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
          SqlConnection conn = new SqlConnection();
-         conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\PlacementMGT\placement_management.mdf; Integrated Security = True; Connect Timeout = 300";
+         conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF; Integrated Security = True; Connect Timeout = 300";
          conn.Open();
          string query1 = "select * from signup where sig_email = '" + txtemail.Text + "'";
          SqlDataAdapter da1 = new SqlDataAdapter(query1, conn);

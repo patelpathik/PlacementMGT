@@ -27,7 +27,7 @@ public partial class dir1_TPO_Default : System.Web.UI.Page
             if (!Page.IsPostBack)
             {
                 String uid = Session["userid"].ToString();
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
                 conn.Open();
                 string query = "select * from tpo WHERE tpo_id='" + uid + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
@@ -53,7 +53,7 @@ public partial class dir1_TPO_Default : System.Web.UI.Page
         try
         {
             String uid = Session["userid"].ToString();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             conn.Open();
             string q = "UPDATE tpo set tpo_name = '"+ txtname.Text + "',tpo_email = '" + txtemail.Text + "', tpo_cno = '" + txtmob.Text + "', tpo_profile = '" + txtprofile.Text + "' , tpo_quali = '" + txtqul.Text + "' WHERE tpo_id =" + uid ;
             SqlCommand cmd = new SqlCommand(q, conn);

@@ -27,7 +27,7 @@ public partial class dir1_TPO_Co_ordinator_Default : System.Web.UI.Page
             if (!Page.IsPostBack)
             {
                 String uid = Session["userid"].ToString();
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
                 conn.Open();
                 string query = "select * from coordinator WHERE co_id='" + uid + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
@@ -53,7 +53,7 @@ public partial class dir1_TPO_Co_ordinator_Default : System.Web.UI.Page
         try
         {
             String uid = Session["userid"].ToString();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             conn.Open();
             string q = "UPDATE coordinator set co_name = '" + txtname.Text + "',id_no = '"+txtidno.Text+"' ,co_email = '" + txtmail.Text + "', co_cno = '" + txtcont.Text + "', br_id = '" + ddlbname.SelectedValue + "' WHERE co_id =" + uid;
             SqlCommand cmd = new SqlCommand(q, conn);

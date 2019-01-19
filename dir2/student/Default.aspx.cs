@@ -16,7 +16,7 @@ public partial class dir2_student_Default : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             string query = "select distinct(st_name) from city order by st_name asc";
             SqlDataAdapter da = new SqlDataAdapter(query, con);
@@ -28,7 +28,7 @@ public partial class dir2_student_Default : System.Web.UI.Page
 
         if (this.IsPostBack)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             string query = "select ct_name from city WHERE st_name = '" + ddlstate.SelectedValue + "'";
             SqlDataAdapter daa = new SqlDataAdapter(query, con);
@@ -52,7 +52,7 @@ public partial class dir2_student_Default : System.Web.UI.Page
             {
 
                 String uid = Session["userid"].ToString();
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
                 conn.Open();
                 string query = "select * from signup s, branch b where s.br_id=b.br_id AND sig_id='" + uid + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
@@ -88,7 +88,7 @@ public partial class dir2_student_Default : System.Web.UI.Page
         try
         {
             String uid = Session["userid"].ToString();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             conn.Open();
             string insertQuery = "update signup set sig_name = '" + txtname.Text + "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "' where sig_id=" + uid;
             SqlCommand cmd = new SqlCommand(insertQuery, conn);

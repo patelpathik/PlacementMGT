@@ -15,7 +15,7 @@ public partial class dir2_company_Default : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             string query = "select distinct(st_name) from city order by st_name asc";
             SqlDataAdapter da = new SqlDataAdapter(query, con);
@@ -27,7 +27,7 @@ public partial class dir2_company_Default : System.Web.UI.Page
 
         if (this.IsPostBack)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             string query = "select ct_name from city WHERE st_name = '" + ddlstate.SelectedValue + "'";
             SqlDataAdapter daa = new SqlDataAdapter(query, con);
@@ -50,7 +50,7 @@ public partial class dir2_company_Default : System.Web.UI.Page
             if (!Page.IsPostBack)
             {
                 String uid = Session["userid"].ToString();
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
                 conn.Open();
                 string query = "select * from company WHERE com_id='" + uid + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
@@ -78,7 +78,7 @@ public partial class dir2_company_Default : System.Web.UI.Page
         try
         {
             String uid = Session["userid"].ToString();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             conn.Open();
             string q = "UPDATE company set com_name = '" + txtname.Text + "',com_email = '" + txtemail.Text + "', com_cno = '" + txtcont.Text + "', c_id = '" + ddlcity.SelectedValue + "', st_id = '" + ddlstate.SelectedValue + "', com_info = '" + txtinfo.Text + "', com_add = '" + txtadd.Text + "' WHERE com_id =" + uid;
             //Response.Write(q);

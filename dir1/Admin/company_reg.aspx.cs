@@ -19,7 +19,7 @@ public partial class dir1_TPO_Default : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             string query = "select distinct(st_name) from city order by st_name asc";
             SqlDataAdapter da = new SqlDataAdapter(query, con);
@@ -31,7 +31,7 @@ public partial class dir1_TPO_Default : System.Web.UI.Page
 
         if (this.IsPostBack)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
             string query = "select ct_name from city WHERE st_name = '" + ddlstate.SelectedValue + "'";
             SqlDataAdapter daa = new SqlDataAdapter(query, con);
@@ -45,7 +45,7 @@ public partial class dir1_TPO_Default : System.Web.UI.Page
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
 
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         con.Open();
         string checkuser = "select count(*) from company where com_email = '" + txtemail.Text + "' OR com_cno = '" + txtcont.Text + "' ";
         SqlCommand cmd1 = new SqlCommand(checkuser, con);

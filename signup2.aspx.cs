@@ -20,7 +20,7 @@ public partial class signup2 : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         con.Open();
         string checkuser = "select * from signup where sig_email = '" + txtemail.Text + "' AND sig_mobile = '" + txtmob.Text + "' AND sig_id_no = '"+ txtid.Text +"' ";
 

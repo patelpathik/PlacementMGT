@@ -22,7 +22,7 @@ public partial class dir1_Admin_Default : System.Web.UI.Page
 
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         con.Open();
         string checkuser = "select count(*) from coordinator where co_email = '" + txtmail.Text + "' OR co_cno = '" + txtcont.Text + "' OR id_no = '" + txtidno.Text + "' ";
         SqlCommand cmd1 = new SqlCommand(checkuser, con);

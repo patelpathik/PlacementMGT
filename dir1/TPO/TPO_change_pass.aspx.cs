@@ -17,7 +17,7 @@ public partial class dir1_Admin_Default : System.Web.UI.Page
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
         String uid = Session["userid"].ToString();
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         con.Open();
         string checkuser = "select * from tpo where tpo_email = '" + txtemail.Text + "' AND tpo_pwd = '"+txtcupass.Text+"' WHERE tpo_id= " +uid;
         SqlCommand cmd1 = new SqlCommand(checkuser, con);

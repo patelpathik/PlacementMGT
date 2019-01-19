@@ -26,7 +26,7 @@ public partial class dir1_Admin_Default : System.Web.UI.Page
                 if (Request.QueryString["dflag"].ToString() == "1")
                 {
                     //Response.Write("<script>if(confirm('Are you sure you want to DELETE record ?')){} else{window.top.location='company_reg.php';}</script>");
-                    SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+                    SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
                     con.Open();
                     string del = Request.QueryString["co_id"].ToString();
                     string delete = "Delete from coordinator WHERE co_id=" + del;
@@ -43,7 +43,7 @@ public partial class dir1_Admin_Default : System.Web.UI.Page
                 txtcpass.Visible = false;
                 
                 string com_id = Request.QueryString["com_id"].ToString();
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
                 con.Open();
                 string query = "select * from company WHERE com_id='" + com_id + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
@@ -67,7 +67,7 @@ public partial class dir1_Admin_Default : System.Web.UI.Page
 
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\PlacementMGT\placement_management.mdf;Integrated Security=True;Connect Timeout=300");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
         con.Open();
         string checkuser = "select count(*) from coordinator where co_email = '" + txtmail.Text + "' OR co_cno = '" + txtcont.Text + "' OR id_no = '" + txtidno.Text+ "' ";
         SqlCommand cmd1 = new SqlCommand(checkuser, con);

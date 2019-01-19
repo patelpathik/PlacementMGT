@@ -20,7 +20,7 @@ public partial class Login : System.Web.UI.Page
     {
         //string ut = utype.SelectedValue;
         SqlConnection conn = new SqlConnection();
-        conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\PlacementMGT\placement_management.mdf; Integrated Security = True; Connect Timeout = 300";
+        conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF; Integrated Security = True; Connect Timeout = 300";
         conn.Open();
        /* if (ut == "S")
         {

@@ -17,7 +17,7 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
         try
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\PlacementMGT\placement_management.mdf; Integrated Security = True; Connect Timeout = 3000";
+            con.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF; Integrated Security = True; Connect Timeout = 3000";
             con.Open();
 
             if (Request.QueryString["req"] != null)
