@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="student.master.cs" Inherits="dir2_student_student" %>
+<!DOCTYPE html>
+<html lang="en">
+    <%
+        if (Session["userid"] == null) {
+            Response.Redirect("../../Login.aspx");
+        }
+    %>
+<head>
+	<meta charset="utf-8">
+	<title>BVM</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- css -->
+	<link href="../design/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="../design/css/style.css" rel="stylesheet">
+	<!-- skin color -->
+	<link href="../design/color/default.css" rel="stylesheet">
+    
+    <script type="text/css">
+        .img-circle {
+             border-radius: 50%;
+            }
+ </script>
+    <script src="../../jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#logout").click(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "../../logout.aspx?logout=1",
+                    success: function (data) {
+                        window.top.location = "../../Login.aspx";
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("FileUpload1").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("Image1").src = oFREvent.target.result;
+            };
+        };
+    </script>
+
+	<!--[if lt IE 7]>
+    <link href="css/font-awesome-ie7.css" type="text/css" rel="stylesheet">
+  <![endif]-->
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+
+	<!-- =======================================================
+		Theme Name: Maxim
+		Theme URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+		Author: BootstrapMade.com
+		Author URL: https://bootstrapmade.com
+	======================================================= -->
+
+</head>
+
+<body>
+	<!-- navbar -->
+	<div class="navbar-wrapper">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<!-- Responsive navbar -->
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</a>
+					<h1 class="brand"><a href="index.html">Placement Management</a></h1>
+					<!-- navigation -->
+					<nav class="pull-right nav-collapse collapse">
+						<ul id="menu-main" class="nav">
+							<li><a title="team" href="update_profile.aspx">Edit Profile</a></li>
+							<li><a title="services" href="index.html#services">Services</a></li>
+							<li><a title="contact" href="change_pass.aspx">Change Password</a></li>
+							<li><a href="page.html">Page</a></li>
+                            <%
+                                if (Session["userid"] != null)
+                                {
+                            %>
+                                <li><a id="logout" href="">Logout</a></li>
+                               
+                            <%
+                                }
+                            %>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section id="maincontent" class="inner">
+		<div class="container">
+			<div class="row">
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                    </asp:ContentPlaceHolder>
+			</div>
+
+		</div>
+		<!-- end container -->
+	</section>
+
+    <footer>
+		<div class="container">
+			<div class="row">
+				<div class="span6 offset3">
+					<ul class="social-networks">
+						<li><a href="https://www.instagram.com/bvm_students/"><i class="icon-circled icon-bgdark icon-instagram icon-2x"></i></a></li>
+						<li><a href="https://twitter.com/VishvakarmaBVM"><i class="icon-circled icon-bgdark icon-twitter icon-2x"></i></a></li>
+						<li><a href=""><i class="icon-circled icon-bgdark icon-dribbble icon-2x"></i></a></li>
+						<li><a href="#"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
+					</ul>
+					<p class="copyright">
+						
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- ./container -->
+	</footer>
+
+
+    <script src="../design/js/jquery.js"></script>
+	<script src="../design/js/jquery.scrollTo.js"></script>
+	<script src="../design/js/jquery.nav.js"></script>
+	<script src="../design/js/jquery.localScroll.js"></script>
+	<script src="../design/js/bootstrap.js"></script>
+	<script src="../design/js/jquery.prettyPhoto.js"></script>
+	<script src="../design/js/isotope.js"></script>
+	<script src="../design/js/jquery.flexslider.js"></script>
+	<script src="../design/js/inview.js"></script>
+	<script src="../design/js/animate.js"></script>
+	<script src="../design/js/custom.js"></script>
+	<script src="../design/contactform/contactform.js"></script>
+    </body>
+    </html>
