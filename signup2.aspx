@@ -74,7 +74,7 @@
                     <div class="wrap-input100">
 
                     <asp:DropDownList ID="ddlbranch" class="input100" runat="server">
-                         <asp:ListItem >Semester</asp:ListItem>
+                         <asp:ListItem >-- Semester --</asp:ListItem>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>

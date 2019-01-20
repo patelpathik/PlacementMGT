@@ -65,8 +65,10 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
                 Image1.AlternateText = imgurl2;
                 Image1.ImageUrl = imgurl2;
                 txtname.Text = dt.Rows[0][1].ToString();
-                txtid.Text = dt.Rows[0][2].ToString();
+                lblname.Text = dt.Rows[0][1].ToString();
+                lblid.Text = dt.Rows[0][2].ToString();
                 txtemail.Text = dt.Rows[0][3].ToString();
+                lblemail.Text = dt.Rows[0][3].ToString();
                 txtmob.Text = dt.Rows[0][4].ToString();
                 ddlbranch.SelectedValue =dt.Rows[0][18].ToString();
                 ddlsem.SelectedValue = dt.Rows[0][6].ToString();
@@ -74,7 +76,7 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
                 txtadd.Text = dt.Rows[0][11].ToString();
                 ddlcity.SelectedValue = dt.Rows[0][12].ToString();
                 ddlstate.SelectedValue = dt.Rows[0][13].ToString();
-                //txtdob.Text = dt.Rows[0][14].ToString();
+                txtdob.Text = dt.Rows[0][14].ToString();
                 conn.Close();
             }
         }
@@ -91,26 +93,8 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
             String uid = Session["userid"].ToString();
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             conn.Open();
-            string insertQuery = "update signup set sig_name = '"+txtname.Text+ "',sig_id_no= '" + txtid.Text + "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "',imagename=@imagename,imagepath=imagepath where sig_id=" + uid;
+            string insertQuery = "update signup set sig_name = '"+txtname.Text+ "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "',imagename=@imagename,imagepath=imagepath where sig_id=" + uid;
             SqlCommand cmd = new SqlCommand(insertQuery, conn);
-            string filename = Path.GetFileName(FileUpload1.FileName);
-            if (filename != null)
-            {
-                try
-                {
-                    FileUpload1.SaveAs(Server.MapPath("~/profile/" + filename));
-                }
-                catch (Exception e2)
-                {
-
-                }
-            }
-            else
-            {
-                filename = "";
-            }
-            cmd.Parameters.AddWithValue("@imagename", filename);
-            cmd.Parameters.AddWithValue("@imagepath", "profile/" + filename);
             //Response.Write("<script>alert('"+insertQuery+"');</script>");
             cmd.ExecuteNonQuery();
             Response.Write("<script>alert('Data Successfully Updated');</script>");

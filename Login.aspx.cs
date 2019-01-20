@@ -62,7 +62,7 @@ public partial class Login : System.Web.UI.Page
             string temp = dt1.Rows[0][0].ToString();
             Session["userid"] = temp;
             Session["uname"] = dt1.Rows[0][2].ToString();
-            Response.Redirect("dir2/student/update_profile.aspx");
+            Response.Redirect("dir2/student/Home.aspx");
         }
         string query2 = "select * from tpo where tpo_email = '" + txtuname.Text + "' AND tpo_pwd = '" + txtpass.Text + "' ";
         SqlDataAdapter da2 = new SqlDataAdapter(query2, conn);
