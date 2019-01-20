@@ -37,6 +37,19 @@ License: You must have a valid license purchased only from themeforest(the above
             }
           });
         </script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $("#logout").click(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "../../logout.aspx?logout=1",
+                    success: function (data) {
+                        window.top.location = "../../Login.aspx";
+                    }
+                });
+            });
+        });
+    </script>
         <!--end::Web font -->
 
         <!--begin::Base Styles -->  
@@ -126,9 +139,11 @@ License: You must have a valid license purchased only from themeforest(the above
  <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
 	<a href="#" class="m-nav__link m-dropdown__toggle">
 		<span class="m-topbar__welcome m--hidden-tablet m--hidden-mobile">Hello,&nbsp;</span>	
-		<span class="m-topbar__username m--hidden-tablet m--hidden-mobile m--padding-right-15"><span class="m-link">Jaladhi</span></span>
+		<span class="m-topbar__username m--hidden-tablet m--hidden-mobile m--padding-right-15"><span class="m-link">
+        <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
+		                                                                                       </span></span>
 		<span class="m-topbar__userpic">
-			<img src="../../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+               <asp:Image ID="Image1" class="m--img-rounded m--marginless m--img-centered" runat="server"></asp:Image>
 		</span>			
 	</a>
 	<div class="m-dropdown__wrapper">
@@ -140,8 +155,10 @@ License: You must have a valid license purchased only from themeforest(the above
 						<img src="assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt=""/>
 					</div>
 					<div class="m-card-user__details">
-						<span class="m-card-user__name m--font-weight-500">Jaladhi Patel</span>
-						<a href="" class="m-card-user__email m--font-weight-300 m-link">jaladhi.patel@gmail.com</a>
+						<span class="m-card-user__name m--font-weight-500">        <asp:Label ID="lblname1" runat="server" Text=""></asp:Label>
+</span>
+						<a href="" class="m-card-user__email m--font-weight-300 m-link"><asp:Label ID="lblemail" runat="server" Text=""></asp:Label>
+</a>
 					</div>
 				</div>
 			</div>
@@ -152,7 +169,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<span class="m-nav__section-text">Section</span>
 						</li>
 						<li class="m-nav__item">
-							<a href="index-page=profile&amp;demo=demo4.html" class="m-nav__link">
+							<a href="update_profile.aspx" class="m-nav__link">
 								<i class="m-nav__link-icon flaticon-profile-1"></i>
 								<span class="m-nav__link-title">  
 									<span class="m-nav__link-wrap">      
@@ -222,7 +239,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light "  >
 		
 		<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
-			<li class="m-menu__item  m-menu__item--active "  aria-haspopup="true"><a  href="index-page=index&amp;demo=demo4.html" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Dashboard</span></a></li>
+			<li class="m-menu__item  m-menu__item--active "  aria-haspopup="true"><a  href="Home.aspx" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Home</span></a></li>
             <li class="m-menu__item" aria-haspopup="true"><a href="index-page=index&amp;demo=demo4.html" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Profile</span></a></li>
 
         </ul>

@@ -76,7 +76,7 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
                 txtadd.Text = dt.Rows[0][11].ToString();
                 ddlcity.SelectedValue = dt.Rows[0][12].ToString();
                 ddlstate.SelectedValue = dt.Rows[0][13].ToString();
-                //txtdob.Text = dt.Rows[0][14].ToString();
+                txtdob.Text = dt.Rows[0][14].ToString();
                 conn.Close();
             }
         }

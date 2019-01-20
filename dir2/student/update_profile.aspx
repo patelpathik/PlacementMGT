@@ -28,9 +28,9 @@
 						</div>
 					</div>
 					<div class="m-card-profile__details">
-                        <asp:Label ID="lblname" class="m-card-profile__name" runat="server" Text="Jaladhi"></asp:Label>
+                        <asp:Label ID="lblname" class="m-card-profile__name" runat="server" Text=""></asp:Label>
 
-                        <asp:Label ID="lblemail" class="m-card-profile__email m-link" runat="server" Text="jd@gmail.com"></asp:Label>
+                        <asp:Label ID="lblemail" class="m-card-profile__email m-link" runat="server" Text=""></asp:Label>
 					</div>
 				</div>	
 				
@@ -78,6 +78,13 @@
 								</div>
 							</div>
                             <div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Branch</label>
+								<div class="col-7">
+                                    <asp:DropDownList ID="ddlbranch" class="form-control m-input" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_name" DataValueField="br_id" ></asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:placement_managementConnectionString %>" SelectCommand="SELECT * FROM [branch]"></asp:SqlDataSource>
+								</div>
+							</div>
+                            <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Enrolment Number</label>
 								<div class="col-7">
                                     <asp:TextBox ID="txtenrol" class="form-control m-input" runat="server"></asp:TextBox>
@@ -104,13 +111,7 @@
                                 <div class="col-3">
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage=" * Email ID Require" ControlToValidate="txtemail" ForeColor="red"></asp:RequiredFieldValidator>                                 </div>
 							</div>
-							<div class="form-group m-form__group row">
-								<label for="example-text-input" class="col-2 col-form-label">Branch</label>
-								<div class="col-7">
-                                    <asp:DropDownList ID="ddlbranch" class="form-control m-input" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_name" DataValueField="br_id"></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:placement_managementConnectionString %>" SelectCommand="SELECT * FROM [branch]"></asp:SqlDataSource>
-								</div>
-							</div>
+							
                             <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Semester</label>
 								<div class="col-7">
@@ -139,7 +140,7 @@
                         <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Date of Birth</label>
 								<div class="col-7">
-                                    <asp:TextBox ID="txtdob" runat="server" class="form-control m-input" TextMode="Date"></asp:TextBox>		
+                                    <asp:TextBox ID="txtdob" runat="server" class="form-control m-input" TextMode="Date"></asp:TextBox> [MM/DD/YY Format]		
                                     <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtdob" MinimumValue="12/31/1980" MaximumValue="1/1/2005" Type="Date" ForeColor="Red" text=" * Invalid Date" Display="Dynamic"/>							</div>
 
                              <div class="col-3">
