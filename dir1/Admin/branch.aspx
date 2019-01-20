@@ -2,12 +2,24 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="../../jquery.min.js"></script>-->
 
     <script type="text/javascript">
         $(document).ready(function () {
-            //alert("hi");
+            alert("hi");
             load_data();
+
+            $("#l_one").click(function () {
+                $("#m_user_profile_tab_1").show();
+                $("#m_user_profile_tab_2").hide();
+                $("#m_user_profile_tab_3").hide();
+            });
+
+            $("#l_two").click(function () {
+                $("#m_user_profile_tab_1").hide();
+                $("#m_user_profile_tab_2").show();
+                $("#m_user_profile_tab_3").hide();
+            });
         });
         //setInterval(load_data, 3000);
 
@@ -20,7 +32,7 @@
             $.ajax({
                 method: "GET",
                 url: temp,
-                success: function (data) {
+                success: function(data) {
                     $("#stu_tbody").html(data);
                 }
             });
@@ -51,6 +63,9 @@
                     $("#m_user_profile_tab_1").hide();
                     $("#m_user_profile_tab_2").hide();
                     $("#m_user_profile_tab_3").show();
+
+                    document.getElementById("bfn").value = name;
+                    document.getElementById("bsn").value = sname;
                 }
             });
         }
@@ -59,10 +74,37 @@
             $("#l_two").show();
             $("#l_upd").hide();
 
-            $("one").click();
+            $("#l_two").click();
 
-            $("#m_user_profile_tab_2").hide();
+            //$("#m_user_profile_tab_1").show();
+            //$("#m_user_profile_tab_2").hide();
             $("#m_user_profile_tab_3").hide();
+        }
+        function do_update() {
+            var bfn = document.getElementById("bfn").value;
+            var bsn = document.getElementById("bsn").value;
+            var bid = document.getElementById("branch_id").value;
+
+            alert(bfn);
+            alert(bsn);
+            alert(bid);
+
+            var temp = "load_data.aspx?update=branch&bid=" + bid + "&bfn=" + bfn + "&bsn=" + bsn;
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function(data){
+                    $("#l_one").show();
+                    $("#l_two").show();
+                    $("#l_upd").hide();
+
+                    $("#l_two").click();
+
+                    //$("#m_user_profile_tab_1").show();
+                    //$("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").hide();
+                }
+            });
         }
     </script>
     <div id="pat1"></div>
@@ -134,7 +176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="m-portlet__foot m-portlet__foot--fit" id="btn_def">
+                            <div class="m-portlet__foot m-portlet__foot--fit">
                                 <div class="m-form__actions">
                                 <br />
                                     <div class="row">
@@ -192,6 +234,44 @@
                         </div>
                     </div>
                     <div class="tab-pane " id="m_user_profile_tab_3">
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                            <div class="m-portlet__body">
+                                <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                    <div class="alert m-alert m-alert--default" role="alert">
+                                        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <label for="example-text-input" class="col-2 col-form-label">Branch Full Name</label>
+                                    <div class="col-7">
+                                        <input id="bfn" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Branch Short Name</label>
+                                    <div class="col-7">
+                                        <input id="bsn" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                <br />
+                                    <div class="row">
+                                        <div class="col-2">
+                                        </div>
+                                        <div class="col-7">
+                                            <button class="btn btn-info m-btn m-btn--air m-btn--custom" onclick="do_update();">Update</button>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom" onclick="upd_rev();">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

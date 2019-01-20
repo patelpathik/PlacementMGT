@@ -92,7 +92,7 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            Response.Write("<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][3] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder'><i class='la la-pencil' id='"+ dt1.Rows[i][0].ToString() + "' onclick='update(this.id);'></i></button>&nbsp;<button class='btn m-btn--pill    btn-warning m-btn m-btn--custom m-btn--label-brand m-btn--bolder'><i class='la la-trash'></i></button></td></tr>");
+                            Response.Write("<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][3] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' id='" + dt1.Rows[i][0].ToString() + "' onclick='update(this.id);'><i class='la la-pencil'></i></button>&nbsp;<button class='btn m-btn--pill    btn-warning m-btn m-btn--custom m-btn--label-brand m-btn--bolder'><i class='la la-trash'></i></button></td></tr>");
                         }
                     }
                 }
@@ -211,6 +211,20 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                             Response.Write("<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][1] + "</td><td>" + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][3] + "</td><td>" + dt1.Rows[i][7] + "</td><td>" + dt1.Rows[i][8] + "</td><td>" + dt1.Rows[i][4] + "</td><td>" + dt1.Rows[i][5] + "</td></tr>");
                         }
                     }
+                }
+            }
+            else if (Request.QueryString["update"] != null)
+            {
+                string update = Request.QueryString["update"].ToString();
+                if (update == "branch")
+                {
+                    string bid = Request.QueryString["bid"].ToString();
+                    string bfn = Request.QueryString["bfn"].ToString();
+                    string bsn = Request.QueryString["bsn"].ToString();
+
+                    string q1 = "update branch set br_name='" + bfn + "',br_sname='" + bsn + "' where br_id=" + bid;
+                    SqlCommand cmd = new SqlCommand(q1, con);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
