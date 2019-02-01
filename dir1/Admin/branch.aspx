@@ -6,7 +6,6 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            alert("hi");
             load_data();
 
             $("#l_one").click(function () {
@@ -53,7 +52,6 @@
                     var id = data_all[0];
                     var name = data_all[1];
                     var sname = data_all[2];
-                    alert(id+":"+name+":"+sname);
                     document.getElementById("pat1").innerHTML = "<input type='hidden' id='branch_id' value='" + id + "'>";
                     //$("#m_user_profile_tab_1").show();
                     //$("#m_user_profile_tab_2").fadeOut();
@@ -84,10 +82,6 @@
             var bfn = document.getElementById("bfn").value;
             var bsn = document.getElementById("bsn").value;
             var bid = document.getElementById("branch_id").value;
-
-            alert(bfn);
-            alert(bsn);
-            alert(bid);
 
             var temp = "load_data.aspx?update=branch&bid=" + bid + "&bfn=" + bfn + "&bsn=" + bsn;
             $.ajax({
@@ -196,15 +190,6 @@
                     </div>
                     <div class="tab-pane " id="m_user_profile_tab_2">           
                         <div class="m-portlet m-portlet--full-height ">
-                            <div class="m-portlet__head">
-                                <div class="m-portlet__head-caption">
-                                    <div class="m-portlet__head-title">
-                                        <h3 class="m-portlet__head-text">
-                                            Update and Delete Branch
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="m-portlet__body">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="m_widget11_tab1_content">

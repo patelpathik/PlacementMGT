@@ -226,11 +226,25 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                     SqlCommand cmd = new SqlCommand(q1, con);
                     cmd.ExecuteNonQuery();
                 }
-            }
+                /*if(update == "comp")
+                {
+                    string cn = Request.QueryString["cn"].ToString();
+                    string no = Request.QueryString["no"].ToString();
+                    string em = Request.QueryString["em"].ToString();
+                    string det = Request.QueryString["det"].ToString();
+                    string add = Request.QueryString["add"].ToString();
+                    string ct = Request.QueryString["ct"].ToString();
+                    string st = Request.QueryString["st"].ToString();
+                    string cid = Request.QueryString["cid"].ToString();
+
+                    string q1 = "update company set com_name ='" + cn + "',com_cno='" + no + "', com_email='"+ em +"', com_info='"+ det +"',com_add='"+add+"',c_id='"+ct+"',st_id='"+st+"'  where com_id=" + cid;
+                    SqlCommand cmd = new SqlCommand(q1, con);
+                    cmd.ExecuteNonQuery();
+                }*/
         }
         catch(Exception e1)
         {
-            Response.Write(e);
+            Response.Write(e1);
         }
     }
 }

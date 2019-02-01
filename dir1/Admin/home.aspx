@@ -9,7 +9,7 @@
             load_data();
         });
         //setInterval(load_data, 3000);
-        function load_data() {
+       function load_data() {
             $("#stu_tbody").fadeOut(1);
             var temp = "load_data.aspx?req=dashtpoco";
             //alert(temp);
@@ -24,7 +24,7 @@
             });
             $("#stu_tbody").fadeIn(1000);
         }
-        function load_data() {
+      /*  function load_data() {
             $("#stu_tbody1").fadeOut(1);
             var temp = "load_data.aspx?req=dashtpo";
             //alert(temp);
@@ -53,7 +53,38 @@
                 }
             });
             $("#stu_tbody2").fadeIn(1000);
+        } 
+        function load_data() {
+            $("#stu_tbody3").fadeOut(1);
+            var temp = "load_data.aspx?tb=signup&sortby=" + verified;
+            //alert(temp);
+            document.getElementById("stu_tbody3").innerHTML = "";
+            //alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    $("#stu_tbody3").html(data);
+                }
+            });
+            $("#stu_tbody3").fadeIn(1000);
         }
+      /*  function load_data() {
+            $("#stu_tbody4").fadeOut(1);
+            var temp = "load_data.aspx?tb=signup&sortby=" + blocked;
+            //alert(temp);
+            document.getElementById("stu_tbody4").innerHTML = "";
+            //alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    $("#stu_tbody4").html(data);
+                  
+                }
+            });
+            $("#stu_tbody4").fadeIn(1000);
+        }*/
 
     </script>
 
@@ -302,14 +333,78 @@
 
                
 				<div class="tab-pane " id="m_user_profile_tab_2">
-				 
+						<div class="m-portlet__body">
+		<div class="tab-content">
+			<div class="tab-pane active" id="m_widget11_tab1_content1">
+				<div class="m-widget11">
+					<div class="table-responsive">
+						<table class="table">
+								 <thead class="stu_th">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>College ID</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Branch</th>
+                        <th>Semester</th>
+                        <!--<th>Status</th>-->
+                        <th>Change Access</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody id="stu_tbody3"></tbody>
+
+							</table>
+						<!--end::Table-->
+					</div>
+					
+				</div>
+				<!--end::Widget 11--> 						             
+			</div>
+			
+		</div>
+	</div>
+						
 				</div>
 
                 <div class="tab-pane " id="m_user_profile_tab_3">
-				 
+						<div class="m-portlet__body">
+		<div class="tab-content">
+			<div class="tab-pane active" id="m_widget11_tab1_content">
+				<div class="m-widget11">
+					<div class="table-responsive">
+						<table class="table">
+								 <thead class="stu_th">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>College ID</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Branch</th>
+                        <th>Semester</th>
+                        <!--<th>Status</th>-->
+                        <th>Change Access</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody id="stu_tbody4"></tbody>
+
+							</table>
+						<!--end::Table-->
+					</div>
+					
+				</div>
+				<!--end::Widget 11--> 						             
+			</div>
+			
+		</div>
+	</div>
+						
 				</div>
 
-            <!--   <div class="tab-pane " id="m_user_profile_tab_4">
+             <div class="tab-pane " id="m_user_profile_tab_4">
                     	<div class="m-portlet m-portlet--full-height ">
 	
 	<div class="m-portlet__body">
@@ -338,7 +433,7 @@
 			</div>
 		</div>
 	</div>
-</div> -->
+</div> 
 			    
                 <div class="tab-pane " id="m_user_profile_tab_5">
 
@@ -378,7 +473,7 @@
 </div>
 				</div>
 
-            <!--    <div class="tab-pane " id="m_user_profile_tab_6">
+              <div class="tab-pane " id="m_user_profile_tab_6">
 				 	<div class="m-portlet m-portlet--full-height ">
 	
 	<div class="m-portlet__body">
@@ -412,7 +507,7 @@
 		</div>
 	</div>
 </div>
-				</div> -->
+				</div> 
 
                 
 			</div>

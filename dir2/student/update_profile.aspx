@@ -43,24 +43,7 @@
 	</div>
 	<div class="col-lg-9">
 		<div class="m-portlet m-portlet--full-height m-portlet--tabs   m-portlet--rounded">
-			<div class="m-portlet__head">
-				<div class="m-portlet__head-tools">
-					<ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
-						<li class="nav-item m-tabs__item">
-							<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
-								<i class="flaticon-share m--hide"></i>
-								Update Profile
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="m-portlet__head-tools">
-					<ul class="m-portlet__nav">
-						<li class="m-portlet__nav-item m-portlet__nav-item--last">
-					</li>
-					</ul>
-				</div>
-			</div>
+			
 			<div class="tab-content">
 				<div class="tab-pane active" id="m_user_profile_tab_1">
 					<form class="m-form m-form--fit m-form--label-align-right" runat="server">
@@ -72,15 +55,15 @@
 								</div>
 							</div>
                             <div class="form-group m-form__group row">
-								<label for="example-text-input" class="col-2 col-form-label">ID Number</label>
+								<label for="example-text-input" class="col-2 col-form-label">ID Number :</label>
 								<div class="col-7">
-                                        <asp:Label ID="lblid" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="lblid" class="form-control m-input" runat="server" BorderColor="White"></asp:TextBox>
 								</div>
 							</div>
                             <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Branch</label>
 								<div class="col-7">
-                                    <asp:DropDownList ID="ddlbranch" class="form-control m-input" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_name" DataValueField="br_id" ></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlbranch" class="form-control m-input" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_name" DataValueField="br_id"  AppendDataBoundItems="True" ></asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:placement_managementConnectionString %>" SelectCommand="SELECT * FROM [branch]"></asp:SqlDataSource>
 								</div>
 							</div>
@@ -140,7 +123,7 @@
                         <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Date of Birth</label>
 								<div class="col-7">
-                                    <asp:TextBox ID="txtdob" runat="server" class="form-control m-input" TextMode="Date"></asp:TextBox> [MM/DD/YY Format]		
+                                    <asp:TextBox ID="txtdob" runat="server" class="form-control m-input" TextMode="Date"></asp:TextBox> [MM/DD/YYYY Format]		
                                     <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtdob" MinimumValue="12/31/1980" MaximumValue="1/1/2005" Type="Date" ForeColor="Red" text=" * Invalid Date" Display="Dynamic"/>							</div>
 
                              <div class="col-3">
@@ -181,10 +164,32 @@
 							
 
 											<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                         <div class="form-group m-form__group row">
+								<div class="col-10 ml-auto">
+									<h3 class="m-form__section">Education Details</h3>
+								</div>
+							</div>
+                        <div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">CPI</label>
+								<div class="col-7">
+                                    <asp:TextBox ID="txtcpi" class="form-control m-input" runat="server" ></asp:TextBox>
+								</div>
+                                <div class="col-3">
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="red" runat="server" ErrorMessage=" * CPI Require" ControlToValidate="txtcpi"></asp:RequiredFieldValidator>
+                                 </div>
+							</div>
+                        <div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Upload Resume</label>
+								<div class="col-7">
+                                    <asp:FileUpload ID="FileUpload1" runat="server" class="form-control m-input" BorderColor="white" />
+								</div>
+                                <div class="col-3">
+                                 </div>
+							</div>
+                        
+                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
 
-
-
-						</div>
+                        </div>
 					
 							<div class="m-form__actions">
 								<div class="row">

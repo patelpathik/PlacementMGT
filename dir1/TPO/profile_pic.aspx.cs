@@ -35,7 +35,7 @@ public partial class dir1_TPO_Default2 : System.Web.UI.Page
             //cmd.Parameters.AddWithValue("@imagename", filename);
             //cmd.Parameters.AddWithValue("@imagepath", "profile/" + filename);
 
-            string insertimg = "update tpo SET imagename = '"+filename+ "' , imagepath= 'profile/"+filename+"' where tpo_id = " + uid;
+            string insertimg = "update tpo SET imagename = '" + filename+ "' , imagepath= 'profile/"+filename+"' where tpo_id = " + uid;
             SqlCommand cmd = new SqlCommand(insertimg, con);
             
             cmd.ExecuteNonQuery();      

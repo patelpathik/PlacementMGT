@@ -70,7 +70,7 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
                 txtemail.Text = dt.Rows[0][3].ToString();
                 lblemail.Text = dt.Rows[0][3].ToString();
                 txtmob.Text = dt.Rows[0][4].ToString();
-                ddlbranch.SelectedValue =dt.Rows[0][18].ToString();
+                ddlbranch.SelectedValue =dt.Rows[0][5].ToString();
                 ddlsem.SelectedValue = dt.Rows[0][6].ToString();
                 txtenrol.Text = dt.Rows[0][10].ToString();
                 txtadd.Text = dt.Rows[0][11].ToString();
@@ -93,7 +93,10 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
             String uid = Session["userid"].ToString();
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             conn.Open();
-            string insertQuery = "update signup set sig_name = '"+txtname.Text+ "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "',imagename=@imagename,imagepath=imagepath where sig_id=" + uid;
+            string filename = Path.GetFileName(FileUpload1.FileName);
+            FileUpload1.SaveAs(Server.MapPath("../../Resume/" + filename));
+
+            string insertQuery = "update signup set resume_name = '" + filename + "' , resume = 'Resume/" + filename + "', sig_name = '" + txtname.Text+ "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "' where sig_id=" + uid;
             SqlCommand cmd = new SqlCommand(insertQuery, conn);
             //Response.Write("<script>alert('"+insertQuery+"');</script>");
             cmd.ExecuteNonQuery();
