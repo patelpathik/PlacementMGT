@@ -8,6 +8,18 @@
         $(document).ready(function () {
             //alert("hi");
             load_data();
+            load_data();
+            $("#l_one").click(function () {
+                $("#m_user_profile_tab_1").show();
+                $("#m_user_profile_tab_2").hide();
+                $("#m_user_profile_tab_3").hide();
+            });
+
+            $("#l_two").click(function () {
+                $("#m_user_profile_tab_1").hide();
+                $("#m_user_profile_tab_2").show();
+                $("#m_user_profile_tab_3").hide();
+            });
         });
         //setInterval(load_data, 3000);
         function load_data() {
@@ -26,14 +38,86 @@
             $("#stu_tbody").fadeIn(1000);
         }
         function update(x) {
-            var temp = "load_data.aspx?req=compup?id=" + x;
+            var temp = "load_data.aspx?req=tpo&id=" + x;
             alert(temp);
             $.ajax({
                 method: "GET",
                 url:temp,
                 success: function (data) {
-                    //var d1 = data.split(",");
-                    alert(data);
+                    data = data.substring(0, data.indexOf(":"));
+                    //alert(data);
+                    var data_all = data.split(",");
+                    var id = data_all[0];
+                    var tponame = data_all[1];
+                    var tpoemail = data_all[2];
+                    var tpomob = data_all[3];
+                    var tpopro = data_all[4];
+                    var tpoquali = data_all[5];
+
+                    document.getElementById("pat1").innerHTML = "<input type='hidden' id='tpo_id' value='" + id + "'>";
+                    //$("#m_user_profile_tab_1").show();
+                    //$("#m_user_profile_tab_2").fadeOut();
+                    $("#l_one").hide();
+                    $("#l_two").hide();
+                    $("#l_upd").show();
+                    $("#m_user_profile_tab_1").hide();
+                    $("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").show();
+
+                    document.getElementById("tponame").value = tponame;
+                    document.getElementById("tpoemail").value = tpoemail;
+                    document.getElementById("tpomob").value = tpomob;
+                    document.getElementById("tpopro").value = tpopro;
+                    document.getElementById("tpoquali").value = tpquali;
+
+                }
+            });
+        }
+        function upd_rev() {
+            $("#l_one").show();
+            $("#l_two").show();
+            $("#l_upd").hide();
+
+            $("#l_two").click();
+
+            //$("#m_user_profile_tab_1").show();
+            //$("#m_user_profile_tab_2").hide();
+            $("#m_user_profile_tab_3").hide();
+        }
+        function do_update() {
+
+            var tponame = document.getElementById("tponame").value;
+            var tpoemail = document.getElementById("tpoemail").value;
+            var tpomob = document.getElementById("tpomob").value;
+            var tpopro = document.getElementById("tpopro").value;
+            var tpoquali = document.getElementById("tpoquali").value;
+            var tid = document.getElementById("tpo_id").value;
+
+            var temp = "load_data.aspx?update=tpo&tid=" + tid + "&ttoname=" + tponame + "&tpoemail=" + tpoemail + "&tpomob=" + tpomob + "&tpopro=" + tpopro + "&tpoquali=" + tpoquali;
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    $("#l_one").show();
+                    $("#l_two").show();
+                    $("#l_upd").hide();
+
+                    $("#l_two").click();
+
+                    //$("#m_user_profile_tab_1").show();
+                    //$("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").hide();
+                }
+            });
+        }
+        function do_delete(x) {
+            var temp = "load_data.aspx?delete=tpo&tid=" + x;
+            alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    load_data();
                 }
             });
         }
@@ -57,7 +141,8 @@
 </div>
 <!-- END: Subheader -->		        <div class="m-content">
 		            <div class="row">
-	
+			<div id="pat1"></div>
+
 	<div class="col-xl-12 col-lg-8">
 		<div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
 			<div class="m-portlet__head">
@@ -196,7 +281,59 @@
 </div>
 				</div>
 				<div class="tab-pane " id="m_user_profile_tab_3">
-					
+					<form class="m-form m-form--fit m-form--label-align-right">
+                            <div class="m-portlet__body">
+                                <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <label for="example-text-input" class="col-2 col-form-label">Name</label>
+                                    <div class="col-7">
+                                        <input id="tponame" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Email ID</label>
+                                    <div class="col-7">
+                                        <input id="tpoemail" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Contact No.</label>
+                                    <div class="col-7">
+                                        <input id="tpomob" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Designation</label>
+                                    <div class="col-7">
+                                        <input id="tpopro" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Qualification</label>
+                                    <div class="col-7">
+                                        <input id="tpoquali" type="text" class="form-control m-input" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                <br />
+                                    <div class="row">
+                                        <div class="col-2">
+                                        </div>
+                                        <div class="col-7">
+                                            <button class="btn btn-info m-btn m-btn--air m-btn--custom" onclick="do_update();">Update</button>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom" onclick="upd_rev();">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                            </div>
+                        </form>
 				</div>
 			</div>
 		</div>

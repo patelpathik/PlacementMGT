@@ -26,28 +26,10 @@ public partial class dir1_TPO_Co_ordinator_Default : System.Web.UI.Page
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
             con.Open();
-            string path = "~/Upload file/" + fileupload.FileName;
-            if (fileupload.HasFile)
-            {
-                string fileExtension = System.IO.Path.GetExtension(fileupload.FileName);
-                if (fileExtension.ToLower() != ".pdf")
-                {
-                    Response.Write("<script>alert('Please select only pdf file')</script>");
-
-                }
-                fileupload.SaveAs(Server.MapPath(path + fileExtension).ToString());
-            }
-            else
-            {
-                Response.Write("<script>alert('Please select file to upload')</script>");
-            }
-
-            string insertQuery = "insert into notice (title,date,time,file) values (@title,@date,@time,@file)";
+            string filename = Path.GetFileName(fileupload1.FileName);
+            fileupload1.SaveAs(Server.MapPath("../../Upload file/" + filename));
+            string insertQuery = "insert into notice (title,date,time,description,filename,filepath) values ('" + txttitle.Text+"',  '"+txtdate.Text+"', '"+txttime.Text+"', '"+txtdes.Text+"', '"+filename+"', 'Upload file/"+filename+"')";
             SqlCommand cmd = new SqlCommand(insertQuery, con);
-           cmd.Parameters.AddWithValue("@title", txttitle.Text);
-            cmd.Parameters.AddWithValue("@date", txtdate.Text);
-            cmd.Parameters.AddWithValue("@time", txttime.Text);
-            cmd.Parameters.AddWithValue("@file", fileExtension);
             cmd.ExecuteNonQuery();
             con.Close();
 

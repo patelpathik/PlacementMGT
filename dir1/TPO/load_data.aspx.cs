@@ -219,7 +219,6 @@ public partial class load_data : System.Web.UI.Page
                     }
                 }
             }
-
         }
         catch (Exception e2)
         {

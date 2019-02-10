@@ -64,7 +64,7 @@
                     <div class="wrap-input100">
 
                     <asp:DropDownList ID="ddlsem" class="input100" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_sname" DataValueField="br_id">
-                           
+                                               
                              </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:placement_managementConnectionString %>" SelectCommand="SELECT * FROM [branch]"></asp:SqlDataSource>
                     <span class="focus-input100"></span>

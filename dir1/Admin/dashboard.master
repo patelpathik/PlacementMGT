@@ -25,22 +25,15 @@
             }
           });
         </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript">
-        $(document).ready(function () {
-            $("#logout").click(function () {
-                $.ajax({
-                    method: "GET",
-                    url: "../../logout.aspx?logout=1",
-                    success: function (data) {
-                        window.top.location = "../../Login.aspx";
-                    }
-                });
-            });
-        });
-    </script>
+            function logout_me() {
+                if (confirm("Are you sure to logout?")) {
+                    window.top.location = window.location.href+"?logout=1";
+                }
+            }
+        </script>
         <!--end::Web font -->
-
         <!--begin::Base Styles -->  
 
                  
@@ -319,7 +312,7 @@
                                 if (Session["userid"] != null)
                                      {
                             %>
-								<a id="logout" href="#" class="m-nav-grid__item">
+								<a id="logout" onclick="logout_me();" href="#" class="m-nav-grid__item">
                                      <i class="m-nav-grid__icon flaticon-folder"></i>
                                     	<span class="m-nav-grid__text">Logout</span>
                                  </a>

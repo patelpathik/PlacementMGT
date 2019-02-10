@@ -63,8 +63,10 @@
                             <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Branch</label>
 								<div class="col-7">
-                                    <asp:DropDownList ID="ddlbranch" class="form-control m-input" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_name" DataValueField="br_id"  AppendDataBoundItems="True" ></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:placement_managementConnectionString %>" SelectCommand="SELECT * FROM [branch]"></asp:SqlDataSource>
+                                    <asp:DropDownList ID="ddlbranch" class="form-control m-input" runat="server" DataSourceID="SqlDataSource1" DataTextField="br_sname" DataValueField="br_id" >
+                                        
+                                    </asp:DropDownList>
+								    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:placement_managementConnectionString %>" SelectCommand="SELECT * FROM [branch]"></asp:SqlDataSource>
 								</div>
 							</div>
                             <div class="form-group m-form__group row">

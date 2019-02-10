@@ -15,21 +15,17 @@ public partial class dir1_dashboard : System.Web.UI.MasterPage
 { 
 protected void Page_Load(object sender, EventArgs e)
     {
-       /* if (Session["userid"] == null)
+        if (Session["userid"] == null)
         {
             Response.Redirect("../../Login.aspx");
         }
-        String uid = Session["userid"].ToString();
-        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\8TH SEM\PLACEMENTMGT\PLACEMENT_MANAGEMENT.MDF;Integrated Security=True;Connect Timeout=300");
-        conn.Open();
-        string query = "select * from tpo WHERE tpo_id='" + uid + "'";
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-        //img.ImageUrl = Server.MapPath("~/profile/" + );
-        String imgurl = dt.Rows[0][7].ToString();
-        String imgurl2 = "../../profile/" + imgurl;
-        Image1.AlternateText = imgurl2;
-        Image1.ImageUrl = imgurl2;*/
+        if (Request.QueryString["logout"] == "1")
+        {
+            if (Session["userid"] != null)
+            {
+                Session["userid"] = null;
+                Response.Redirect("../../Login.aspx");
+            }
+        }
     }
 }

@@ -71,13 +71,22 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txttitle" runat="server" ErrorMessage="* Title is Required"></asp:RequiredFieldValidator>								
                                     </div>
 							</div>
+                             <div class="form-group m-form__group row" runat="server">
+								<label for="example-text-input" class="col-2 col-form-label">Description</label>
+								<div class="col-7">
+                                    <asp:TextBox ID="txtdes" class="form-control m-input" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                </div>
+                                <div class="col-3">
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="txtdes" runat="server" ErrorMessage="* Description is Required"></asp:RequiredFieldValidator>								
+                                    </div>
+							</div>
                             <div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Upload File</label>
 								<div class="col-7">
-                                    <asp:FileUpload ID="fileupload" class="form-control m-input" runat="server" />                              								
+                                    <asp:FileUpload ID="fileupload1" class="form-control m-input" runat="server" />                              								
                                 </div>
                                 <div class="col-3">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="fileupload" runat="server" ErrorMessage="* please select file"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="fileupload1" runat="server" ErrorMessage="* please select file"></asp:RequiredFieldValidator>
                                 </div>
 
 							</div>

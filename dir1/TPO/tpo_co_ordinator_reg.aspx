@@ -7,6 +7,17 @@
         $(document).ready(function () {
             //alert("hi");
             load_data();
+            $("#l_one").click(function () {
+                $("#m_user_profile_tab_1").show();
+                $("#m_user_profile_tab_2").hide();
+                $("#m_user_profile_tab_3").hide();
+            });
+
+            $("#l_two").click(function () {
+                $("#m_user_profile_tab_1").hide();
+                $("#m_user_profile_tab_2").show();
+                $("#m_user_profile_tab_3").hide();
+            });
         });
         //setInterval(load_data, 3000);
         function load_data() {
@@ -33,6 +44,17 @@
                 success: function (data) {
                     //var d1 = data.split(",");
                     alert(data);
+                }
+            });
+        }
+        function do_delete(x) {
+            var temp = "../Admin/load_data.aspx?delete=coordinator&coid=" + x;
+            alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    load_data();
                 }
             });
         }

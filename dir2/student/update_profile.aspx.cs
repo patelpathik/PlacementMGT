@@ -40,15 +40,7 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
         }
         try
         {
-            if (Request.QueryString["logout"] != null)
-            {
-                if (Request.QueryString["logout"] == "1")
-                {
-                    Session["userid"] = null;
-                    Session["utype"] = null;
-                    Response.Redirect("../../Login.aspx");
-                }
-            }
+  
             if (!Page.IsPostBack)
             {
 
@@ -77,6 +69,8 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
                 ddlcity.SelectedValue = dt.Rows[0][12].ToString();
                 ddlstate.SelectedValue = dt.Rows[0][13].ToString();
                 txtdob.Text = dt.Rows[0][14].ToString();
+                txtcpi.Text = dt.Rows[0][18].ToString();
+
                 conn.Close();
             }
         }
@@ -96,7 +90,7 @@ public partial class dir2_student_Default2 : System.Web.UI.Page
             string filename = Path.GetFileName(FileUpload1.FileName);
             FileUpload1.SaveAs(Server.MapPath("../../Resume/" + filename));
 
-            string insertQuery = "update signup set resume_name = '" + filename + "' , resume = 'Resume/" + filename + "', sig_name = '" + txtname.Text+ "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "' where sig_id=" + uid;
+            string insertQuery = "update signup set resume_name = '" + filename + "' , resume = 'Resume/" + filename + "', sig_name = '" + txtname.Text+ "',sig_email= '" + txtemail.Text + "',sig_mobile= '" + txtmob.Text + "',br_id= '" + ddlbranch.SelectedValue + "',sig_sem= '" + ddlsem.SelectedValue + "',enrolment= '" + txtenrol.Text + "',address= '" + txtadd.Text + "',sig_city= '" + ddlcity.SelectedValue + "',sig_state= '" + ddlstate.SelectedValue + "',sig_dob= '" + txtdob.Text + "', cpi = '"+ txtcpi.Text +"' where sig_id=" + uid;
             SqlCommand cmd = new SqlCommand(insertQuery, conn);
             //Response.Write("<script>alert('"+insertQuery+"');</script>");
             cmd.ExecuteNonQuery();

@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <!--<script type="text/javascript" src="../../jquery.min.js"></script>-->
+    <script type="text/javascript" src="../../jquery.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            load_data();
+            load_data(); //1st time run
 
             $("#l_one").click(function () {
                 $("#m_user_profile_tab_1").show();
@@ -39,7 +39,7 @@
         }
         function update(x) {
             var temp = "load_data.aspx?req=branch1&id=" + x;
-            alert(temp);
+            // alert(temp);
             $.ajax({
                 method: "GET",
                 url:temp,
@@ -67,7 +67,7 @@
                 }
             });
         }
-        function upd_rev() {
+        function upd_rev() {                //cancel
             $("#l_one").show();
             $("#l_two").show();
             $("#l_upd").hide();
@@ -78,7 +78,7 @@
             //$("#m_user_profile_tab_2").hide();
             $("#m_user_profile_tab_3").hide();
         }
-        function do_update() {
+        function do_update() {              //submit (update)
             var bfn = document.getElementById("bfn").value;
             var bsn = document.getElementById("bsn").value;
             var bid = document.getElementById("branch_id").value;
@@ -97,6 +97,18 @@
                     //$("#m_user_profile_tab_1").show();
                     //$("#m_user_profile_tab_2").hide();
                     $("#m_user_profile_tab_3").hide();
+                }
+            });
+        }
+        function do_delete(x)
+        {
+            var temp = "load_data.aspx?delete=branch&bid=" + x;
+            alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function(data){
+                    load_data();
                 }
             });
         }

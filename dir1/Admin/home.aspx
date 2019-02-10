@@ -6,10 +6,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             //alert("hi");
-            load_data();
+            //load_data();
         });
         //setInterval(load_data, 3000);
-       function load_data() {
+       function load_tpoco() {
             $("#stu_tbody").fadeOut(1);
             var temp = "load_data.aspx?req=dashtpoco";
             //alert(temp);
@@ -24,7 +24,7 @@
             });
             $("#stu_tbody").fadeIn(1000);
         }
-      /*  function load_data() {
+      function load_tpo() {
             $("#stu_tbody1").fadeOut(1);
             var temp = "load_data.aspx?req=dashtpo";
             //alert(temp);
@@ -39,7 +39,7 @@
             });
             $("#stu_tbody1").fadeIn(1000);
         }
-        function load_data() {
+        function load_comp() {
             $("#stu_tbody2").fadeOut(1);
             var temp = "load_data.aspx?req=dashcomp";
             //alert(temp);
@@ -54,10 +54,10 @@
             });
             $("#stu_tbody2").fadeIn(1000);
         } 
-        function load_data() {
+        function load_signup() {
             $("#stu_tbody3").fadeOut(1);
-            var temp = "load_data.aspx?tb=signup&sortby=" + verified;
-            //alert(temp);
+            var temp = "load_data.aspx?req=dashsignup";
+           // alert(temp);
             document.getElementById("stu_tbody3").innerHTML = "";
             //alert(temp);
             $.ajax({
@@ -69,22 +69,6 @@
             });
             $("#stu_tbody3").fadeIn(1000);
         }
-      /*  function load_data() {
-            $("#stu_tbody4").fadeOut(1);
-            var temp = "load_data.aspx?tb=signup&sortby=" + blocked;
-            //alert(temp);
-            document.getElementById("stu_tbody4").innerHTML = "";
-            //alert(temp);
-            $.ajax({
-                method: "GET",
-                url: temp,
-                success: function (data) {
-                    $("#stu_tbody4").html(data);
-                  
-                }
-            });
-            $("#stu_tbody4").fadeIn(1000);
-        }*/
 
     </script>
 
@@ -128,27 +112,22 @@
 							Show Data
 							</a>
                             </li>
-                        <li class="nav-item m-tabs__item" id="l_upd1">
+                        <li class="nav-item m-tabs__item" id="l_upd1" onclick="load_signup();">
 							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
 								Students
 							</a>
 						</li>
-                        <li class="nav-item m-tabs__item" id="l_upd2">
-							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">
-								Block Students
-							</a>
-						</li>
-                        <li class="nav-item m-tabs__item" id="l_upd3">
+                        <li class="nav-item m-tabs__item" id="l_upd3" onclick="load_tpo();">
 							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_4" role="tab">
 								TPO
 							</a>
 						</li>
-                        <li class="nav-item m-tabs__item" id="l_upd4">
+                        <li class="nav-item m-tabs__item" id="l_upd4" onclick="load_tpoco();">
 							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_5" role="tab">
 								TPC Co-ordinator
 							</a>
 						</li>
-                        <li class="nav-item m-tabs__item" id="l_upd5">
+                        <li class="nav-item m-tabs__item" id="l_upd5" onclick="load_comp();">
 							<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_6" role="tab">
 								Company
 							</a>
@@ -345,12 +324,9 @@
                         <th>Name</th>
                         <th>College ID</th>
                         <th>Email</th>
-                        <th>Contact</th>
                         <th>Branch</th>
                         <th>Semester</th>
-                        <!--<th>Status</th>-->
-                        <th>Change Access</th>
-                        <th>Edit</th>
+                        <th>View Profile</th>
                     </tr>
                 </thead>
                 <tbody id="stu_tbody3"></tbody>

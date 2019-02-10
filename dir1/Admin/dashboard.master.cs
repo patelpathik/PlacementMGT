@@ -13,5 +13,13 @@ public partial class dir1_dashboard : System.Web.UI.MasterPage
         {
             Response.Redirect("../../Login.aspx");
         }
+        if (Request.QueryString["logout"] == "1")
+        {
+            if(Session["userid"]!= null)
+            {
+                Session["userid"] = null;
+                Response.Redirect("../../Login.aspx");
+            }
+        }
     }
 }

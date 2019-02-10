@@ -23,11 +23,17 @@ public partial class dir2_student_student : System.Web.UI.MasterPage
         {
             if (Request.QueryString["logout"] != null)
             {
+                if (Session["userid"] == null)
+                {
+                    Response.Redirect("../../Login.aspx");
+                }
                 if (Request.QueryString["logout"] == "1")
                 {
-                    Session["userid"] = null;
-                    Session["utype"] = null;
-                    Response.Redirect("../../Login.aspx");
+                    if (Session["userid"] != null)
+                    {
+                        Session["userid"] = null;
+                        Response.Redirect("../../Login.aspx");
+                    }
                 }
             }
             if (!Page.IsPostBack)

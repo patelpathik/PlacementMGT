@@ -1,22 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/Admin/dashboard.master" AutoEventWireup="true" CodeFile="company_reg.aspx.cs" Inherits="dir1_TPO_Default" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-   <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+     <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             load_data();
+                $("#l_one").click(function () {
+                    $("#m_user_profile_tab_1").show();
+                    $("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").hide();
+                });
 
-            $("#l_one").click(function () {
-                $("#m_user_profile_tab_1").show();
-                $("#m_user_profile_tab_2").hide();
-                $("#m_user_profile_tab_3").hide();
-            });
-
-            $("#l_two").click(function () {
-                $("#m_user_profile_tab_1").hide();
-                $("#m_user_profile_tab_2").show();
-                $("#m_user_profile_tab_3").hide();
-            });
+                $("#l_two").click(function () {
+                    $("#m_user_profile_tab_1").hide();
+                    $("#m_user_profile_tab_2").show();
+                    $("#m_user_profile_tab_3").hide();
+                });
+            //alert('hey');
         });
         //setInterval(load_data, 3000);
         function load_data() {
@@ -35,13 +35,14 @@
             $("#stu_tbody").fadeIn(1000);
         }
         function update(x) {
-            var temp = "load_data.aspx?req=compup?id=" + x;
-            alert(temp);
+            var temp = "load_data.aspx?req=compup&id=" + x;
+            //alert(temp);
             $.ajax({
                 method: "GET",
-                url:temp,
+                url: temp,
                 success: function (data) {
                     data = data.substring(0, data.indexOf(":"));
+                    //alert(data);
                     var data_all = data.split(",");
                     var id = data_all[0];
                     var name = data_all[1];
@@ -66,51 +67,79 @@
                     document.getElementById("em").value = mail;
                     document.getElementById("det").value = detail;
                     document.getElementById("add").value = add;
-                    document.getElementById("ct").value = city;
-                    document.getElementById("st").value = state;
+                    
+                    $.ajax({
+                        method: "GET",
+                        url: "load_data.aspx?req=state1",
+                        success: function (data) {
+                            console.log(data);
+                            $("#st").html(data);
+                            //$("#st").val(state);
+                        }
+                    });
+                    $.ajax({
+                        method: "GET",
+                        url: "load_data.aspx?req=city1&s=" + state,
+                        success: function (data) {
+                            $("#ct").html(data);
+                            //$("#ct").val(city);
+                        }
+                    });
+                    $("#st").val(state);
+                    $("#ct").val(city);
                 }
             });
-            function upd_rev() {
-                $("#l_one").show();
-                $("#l_two").show();
-                $("#l_upd").hide();
-
-                $("#l_two").click();
-
-                //$("#m_user_profile_tab_1").show();
-                //$("#m_user_profile_tab_2").hide();
-                $("#m_user_profile_tab_3").hide();
-            }
-            function do_update() {
-                var cn = document.getElementById("cn").value = name;
-                var no = document.getElementById("no").value = no;
-                var em = document.getElementById("em").value = mail;
-                var det = document.getElementById("det").value = detail;
-                var add = document.getElementById("add").value = add;
-                var ct = document.getElementById("ct").value = city;
-                var st = document.getElementById("st").value = state;
-                var cid = document.getElementById("com_id").value;
-
-
-                var temp = "load_data.aspx?update=comp&cid=" + cid + "&cn=" + cn + "&no=" + no + "&em" + em + "&det" + det + "add" + add + "ct" + ct + "st" + st ;
-                $.ajax({
-                    method: "GET",
-                    url: temp,
-                    success: function(data){
-                        $("#l_one").show();
-                        $("#l_two").show();
-                        $("#l_upd").hide();
-
-                        $("#l_two").click();
-
-                        //$("#m_user_profile_tab_1").show();
-                        //$("#m_user_profile_tab_2").hide();
-                        $("#m_user_profile_tab_3").hide();
-                    }
-                });
         }
-       
+        function upd_rev() {
+            $("#l_one").show();
+            $("#l_two").show();
+            $("#l_upd").hide();
 
+            $("#l_two").click();
+
+            //$("#m_user_profile_tab_1").show();
+            //$("#m_user_profile_tab_2").hide();
+            $("#m_user_profile_tab_3").hide();
+        }
+        function do_update() {
+            var cn = document.getElementById("cn").value;
+            var no = document.getElementById("no").value;
+            var em = document.getElementById("em").value;
+            var det = document.getElementById("det").value;
+            var add = document.getElementById("add").value;
+            var ct = document.getElementById("ct").value;
+            var st = document.getElementById("st").value;
+            var cid = document.getElementById("com_id").value;
+
+
+            var temp = "load_data.aspx?update=comp&cid=" + cid + "&cn=" + cn + "&no=" + no + "&em=" + em + "&det=" + det + "&add=" + add + "&ct=" + ct + "&st=" + st ;
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function(data){
+                    $("#l_one").show();
+                    $("#l_two").show();
+                    $("#l_upd").hide();
+
+                    $("#l_two").click();
+
+                    //$("#m_user_profile_tab_1").show();
+                    //$("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").hide();
+                }
+            });
+        }
+        function do_delete(x) {
+            var temp = "load_data.aspx?delete=company&cid=" + x;
+            alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    load_data();
+                }
+            });
+        }
     </script>
 
 
@@ -123,13 +152,13 @@
  		<div class="mr-auto">
  			<h3 class="m-subheader__title ">My Profile</h3>			
 			 		</div>
-  		<div>
+  		<div>   
 	</div>
 	</div>
 </div>
 <!-- END: Subheader -->		        <div class="m-content">
 		            <div class="row">
-	
+	<div id="pat1"></div>
 	<div class="col-xl-12 col-lg-8">
 		<div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
 			<div class="m-portlet__head">
@@ -138,7 +167,7 @@
 						<li class="nav-item m-tabs__item">
 							<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
 								<i class="flaticon-share m--hide"></i>
-								Update Profile
+								Add Company Data
 							</a>
 						</li>
 						<li class="nav-item m-tabs__item">
@@ -190,8 +219,8 @@
                                     <asp:TextBox ID="txtcont" class="form-control m-input" runat="server"></asp:TextBox>
                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtcont" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtcont" ErrorMessage="validate only 10 digit" ForeColor="Red" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
-                            
-								</div>
+
+                                </div>
 							</div>
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Email ID</label>
@@ -297,6 +326,7 @@
 </div>
 				</div>
 				<div class="tab-pane " id="m_user_profile_tab_3">
+                        <form class="m-form m-form--fit m-form--label-align-right">
 						<div class="m-portlet__body">
 							<div class="form-group m-form__group m--margin-top-10 m--hide">
 								<div class="alert m-alert m-alert--default" role="alert">
@@ -324,7 +354,7 @@
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Email ID</label>
 								<div class="col-7">
-                                    <input ID="em" class="form-control m-input" runat="server" />
+                                    <input ID="em" class="form-control m-input" type="email" />
 								</div>
 							</div>
 							<div class="form-group m-form__group row">
@@ -352,21 +382,20 @@
 								<label for="example-text-input" class="col-2 col-form-label">State</label>
 								<div class="col-7">
                                    <input ID="st" class="form-control m-input" />
-                           
+                                   <!--<select id="st">
+                                        <option selected disabled>Select State</option>
+                                    </select>-->
 								</div>
 							</div>
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">City</label>
 								<div class="col-7">
-                                    <input ID="ct" runat="server" class="form-control m-input" />
+                                    <input ID="ct" class="form-control m-input" />
+                                    <!--<select id="ct">
+                                        <option selected disabled>Select City</option>
+                                    </select>-->
  								</div>
 							</div>
-							
-						
-
-							
-
-
 						</div>
 						<div class="m-portlet__foot m-portlet__foot--fit">
 							<div class="m-form__actions">
@@ -380,6 +409,7 @@
 								</div>
 							</div>
 						</div>
+                        </form>
 					
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/TPO/dashboard.master" AutoEventWireup="true" CodeFile="company_reg.aspx.cs" Inherits="dir1_TPO_Default" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+   <script type="text/javascript" src="../../jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             //alert("hi");
@@ -24,14 +24,90 @@
             $("#stu_tbody").fadeIn(1000);
         }
         function update(x) {
-            var temp = "load_data.aspx?req=compup?id=" + x;
+            var temp = "../Admin/load_data.aspx?req=compup&id=" + x;
             alert(temp);
             $.ajax({
                 method: "GET",
-                url:temp,
+                url: temp,
                 success: function (data) {
-                    //var d1 = data.split(",");
+                    data = data.substring(0, data.indexOf(":"));
                     alert(data);
+                    var data_all = data.split(",");
+                    var id = data_all[0];
+                    var name = data_all[1];
+                    var no = data_all[2];
+                    var mail = data_all[3];
+                    var detail = data_all[4];
+                    var add = data_all[5];
+                    var city = data_all[6];
+                    var state = data_all[7];
+                    document.getElementById("pat1").innerHTML = "<input type='hidden' id='com_id' value='" + id + "'>";
+                    //$("#m_user_profile_tab_1").show();
+                    //$("#m_user_profile_tab_2").fadeOut();
+                    $("#l_one").hide();
+                    $("#l_two").hide();
+                    $("#l_upd").show();
+                    $("#m_user_profile_tab_1").hide();
+                    $("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").show();
+
+                    document.getElementById("cn").value = name;
+                    document.getElementById("no").value = no;
+                    document.getElementById("em").value = mail;
+                    document.getElementById("det").value = detail;
+                    document.getElementById("add").value = add;
+                    document.getElementById("ct").value = city;
+                    document.getElementById("st").value = state;
+                }
+            });
+        }
+        function upd_rev() {
+            $("#l_one").show();
+            $("#l_two").show();
+            $("#l_upd").hide();
+
+            $("#l_two").click();
+
+            //$("#m_user_profile_tab_1").show();
+            //$("#m_user_profile_tab_2").hide();
+            $("#m_user_profile_tab_3").hide();
+        }
+        function do_update() {
+            var cn = document.getElementById("cn").value;
+            var no = document.getElementById("no").value;
+            var em = document.getElementById("em").value;
+            var det = document.getElementById("det").value;
+            var add = document.getElementById("add").value;
+            var ct = document.getElementById("ct").value;
+            var st = document.getElementById("st").value;
+            var cid = document.getElementById("com_id").value;
+
+
+            var temp = "../Admin/load_data.aspx?update=comp&cid=" + cid + "&cn=" + cn + "&no=" + no + "&em=" + em + "&det=" + det + "&add=" + add + "&ct=" + ct + "&st=" + st;
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    $("#l_one").show();
+                    $("#l_two").show();
+                    $("#l_upd").hide();
+
+                    $("#l_two").click();
+
+                    //$("#m_user_profile_tab_1").show();
+                    //$("#m_user_profile_tab_2").hide();
+                    $("#m_user_profile_tab_3").hide();
+                }
+            });
+        }
+        function do_delete(x) {
+            var temp = "../Admin/load_data.aspx?delete=company&cid=" + x;
+            alert(temp);
+            $.ajax({
+                method: "GET",
+                url: temp,
+                success: function (data) {
+                    load_data();
                 }
             });
         }
@@ -221,8 +297,91 @@
 	</div>
 </div>
 				</div>
+                	<div id="pat1"></div>
+
 				<div class="tab-pane " id="m_user_profile_tab_3">
-					
+					<div class="m-portlet__body">
+							<div class="form-group m-form__group m--margin-top-10 m--hide">
+								<div class="alert m-alert m-alert--default" role="alert">
+								</div>
+							</div>
+
+							<div class="form-group m-form__group row">
+								<div class="col-10 ml-auto">
+									<h3 class="m-form__section">1. Personal Details</h3>
+								</div>
+							</div>
+
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Name</label>
+								<div class="col-7">
+                                    <input ID="cn" class="form-control m-input" />
+                            </div>
+							</div>
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Contact</label>
+								<div class="col-7">
+                                    <input ID="no" class="form-control m-input" />
+                                 </div>
+							</div>
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Email ID</label>
+								<div class="col-7">
+                                    <input ID="em" class="form-control m-input" type="email" />
+								</div>
+							</div>
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Company Detail</label>
+								<div class="col-7">
+                                    <input ID="det" class="form-control m-input" />
+								</div>
+							</div>
+							
+							<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+
+							<div class="form-group m-form__group row">
+								<div class="col-10 ml-auto">
+									<h3 class="m-form__section">2. Address</h3>
+								</div>
+							</div>
+
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">Address</label>
+								<div class="col-7">
+                                    <input ID="add" class="form-control m-input" />
+								</div>
+							</div>
+                            <div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">State</label>
+								<div class="col-7">
+                                   <input ID="st" class="form-control m-input" />
+                                  <!--  <select id="st">
+                                        <option selected disabled>Select State</option>
+                                    </select>-->
+								</div>
+							</div>
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-2 col-form-label">City</label>
+								<div class="col-7">
+                                    <input ID="ct" class="form-control m-input" />
+                                   <!-- <select id="ct">
+                                        <option selected disabled>Select State</option>
+                                    </select> -->
+ 								</div>
+							</div>
+						</div>
+						<div class="m-portlet__foot m-portlet__foot--fit">
+							<div class="m-form__actions">
+								<div class="row">
+									<div class="col-2">
+									</div>
+									<div class="col-7">
+                                        <button class="btn btn-info m-btn m-btn--air m-btn--custom" onclick="do_update();">Update</button>
+                                        <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom" onclick="upd_rev();">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 		</div>
