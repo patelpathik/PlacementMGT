@@ -36,13 +36,13 @@
         }
         function update(x) {
             var temp = "load_data.aspx?req=tpocoupd&id=" + x;
-            alert(temp);
+            //alert(temp);
             $.ajax({
                 method: "GET",
                 url:temp,
                 success: function (data) {
                     data = data.substring(0, data.indexOf(":"));
-                    //alert(data);
+                    alert(data);
                     var data_all = data.split(",");
                     var id = data_all[0];
                     var tconame = data_all[1];

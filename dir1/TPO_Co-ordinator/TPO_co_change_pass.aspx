@@ -55,6 +55,7 @@
                                     <asp:TextBox ID="txtemail" class="form-control m-input" runat="server" TextMode="Email"></asp:TextBox>
                                            <asp:RequiredFieldValidator ID="id1" ForeColor="Red" ControlToValidate="txtemail" runat="server" ErrorMessage="* Email ID is Required"></asp:RequiredFieldValidator>								</div>
 							</div>
+        
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Old Password</label>
 								<div class="col-7">

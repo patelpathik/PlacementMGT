@@ -231,15 +231,40 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                         }
                     }
                 }
-                else if (req == "tpo")
+                else if (req == "tpo1")
                 {
-                    String tid = Request.QueryString["tid"].ToString();
+                    String tid = Request.QueryString["id"].ToString();
                     String q1 = "select * from tpo where tpo_id='" + tid + "'";
                     //Response.Write(q1);
                     SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
                     DataTable dt1 = new DataTable();
                     da1.Fill(dt1);
                     String data = dt1.Rows[0][0].ToString() + "," + dt1.Rows[0][1].ToString() + "," + dt1.Rows[0][2].ToString() + "," + dt1.Rows[0][3].ToString() + "," + dt1.Rows[0][4].ToString() + "," + dt1.Rows[0][6].ToString() + ":";
+                    Response.Write(data);
+                }
+                else if (req == "notice")
+                {
+                    string not = "select * from notice";
+                    SqlDataAdapter da1 = new SqlDataAdapter(not, con);
+                    DataTable dt1 = new DataTable();
+                    da1.Fill(dt1);
+                    int count = dt1.Rows.Count;
+                    if (count != 0)
+                    {
+                        for (int i = 0; i < count; i++)
+                        {
+                            Response.Write("<tr><td>" + dt1.Rows[i][3] + " " + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][1] + "</td><td>" + dt1.Rows[i][7] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder'><i class='la la-pencil' id='" + dt1.Rows[i][0].ToString() + "' onclick='update(this.id);'></i></button>&nbsp;<button class='btn m-btn--pill    btn-warning m-btn m-btn--custom m-btn--label-brand m-btn--bolder'><i class='la la-trash' id='" + dt1.Rows[i][0].ToString() + "' onclick='do_delete(this.id);'></i></button></td></tr>");
+                        }
+                    }
+                }
+                else if (req == "not")
+                {
+                    String id = Request.QueryString["id"].ToString();
+                    String q1 = "select * from notice where n_id='" + id + "'";
+                    SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
+                    DataTable dt1 = new DataTable();
+                    da1.Fill(dt1);
+                    String data = dt1.Rows[0][0].ToString() + "," + dt1.Rows[0][1].ToString() + "," + dt1.Rows[0][7].ToString() + ":";
                     Response.Write(data);
                 }
                 else if (req == "dashtpoco")
@@ -298,7 +323,7 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            Response.Write("<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][1] + "</td><td>" + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][3] + "</td><td>" + dt1.Rows[i][5] + "</td><td>" + dt1.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' onclick='window.top.location=\"view_profile.aspx?uid=\"+this.id;' id='" + dt1.Rows[i][0].ToString() + "'><i class='la la-user'></i></button></td></tr>");
+                            Response.Write("<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][1] + "</td><td>" + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][3] + "</td><td>" + dt1.Rows[i][5] + "</td><td>" + dt1.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' onclick='window.top.location=\"view_profile.aspx?uid=\"+this.id;' id='" + dt1.Rows[i][0].ToString() + "'><i class='la la-user'></i></button></td><td><button class='btn m-btn--pill    btn-warning m-btn m-btn--custom m-btn--label-brand m-btn--bolder' onclick='window.top.location=\"update_profile.aspx?uid=\"+this.id;' id='" + dt1.Rows[i][0].ToString() + "'><i class='la la-user'></i>Update</button></td></tr>");
                         }
                     }
                 }
@@ -369,7 +394,16 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                     SqlCommand cmd = new SqlCommand(q1, con);
                     cmd.ExecuteNonQuery();
                 }
+                if (update == "notice")
+                {
+                    string nid = Request.QueryString["nid"].ToString();
+                    string ntitle = Request.QueryString["ntitle"].ToString();
+                    string ndes = Request.QueryString["ndes"].ToString();
 
+                    string q1 = "update notice set title ='" + ntitle + "',description='" + ndes + "' where n_id=" + nid;
+                    SqlCommand cmd = new SqlCommand(q1, con);
+                    cmd.ExecuteNonQuery();
+                }
             }
             else if (Request.QueryString["delete"] != null)
             {
@@ -402,6 +436,14 @@ public partial class dir1_Admin_load_data : System.Web.UI.Page
                 {
                     string tid = Request.QueryString["tid"].ToString();
                     string q1 = "delete tpo where tpo_id=" + tid;
+                    Response.Write(q1);
+                    SqlCommand cmd = new SqlCommand(q1, con);
+                    cmd.ExecuteNonQuery();
+                }
+                if (delete == "notice")
+                {
+                    string nid = Request.QueryString["nid"].ToString();
+                    string q1 = "delete notice where n_id=" + nid;
                     Response.Write(q1);
                     SqlCommand cmd = new SqlCommand(q1, con);
                     cmd.ExecuteNonQuery();

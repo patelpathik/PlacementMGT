@@ -45,7 +45,7 @@ public partial class dir2_student_load_data : System.Web.UI.Page
                 {
                     for (int i = 0; i < count; i++)
                     {
-                        Response.Write("<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][1] + "</td><td>" + dt1.Rows[i][7] + "</td><td><a target='_blank' href='../../" + dt1.Rows[i][6] + "'>Download File</a></td><td>" + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][3] + "</td></tr>");
+                        Response.Write("<tr><td>" + dt1.Rows[i][3] + "  " + dt1.Rows[i][2] + "</td><td>" + dt1.Rows[i][1] + "</td><td>" + dt1.Rows[i][7] + "</td><td><a target='_blank' href='../../" + dt1.Rows[i][6] + "'>Download File</a></td></tr>");
                     }
                 }
             }

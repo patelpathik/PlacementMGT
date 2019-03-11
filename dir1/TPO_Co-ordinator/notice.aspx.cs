@@ -18,6 +18,7 @@ public partial class dir1_TPO_Co_ordinator_Default : System.Web.UI.Page
     {
         txtdate.Text = DateTime.Now.ToShortDateString();
         txttime.Text = DateTime.Now.ToShortTimeString();
+       
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -28,7 +29,8 @@ public partial class dir1_TPO_Co_ordinator_Default : System.Web.UI.Page
             con.Open();
             string filename = Path.GetFileName(fileupload1.FileName);
             fileupload1.SaveAs(Server.MapPath("../../Upload file/" + filename));
-            string insertQuery = "insert into notice (title,date,time,description,filename,filepath) values ('" + txttitle.Text+"',  '"+txtdate.Text+"', '"+txttime.Text+"', '"+txtdes.Text+"', '"+filename+"', 'Upload file/"+filename+"')";
+            string insertQuery="";
+            insertQuery = "insert into notice (title,date,time,description,filename,filepath) values ('" + txttitle.Text+"',  '"+txtdate.Text+"', '"+txttime.Text+"', '"+txtdes.Text+"', '"+filename+"', 'Upload file/"+filename+"')";
             SqlCommand cmd = new SqlCommand(insertQuery, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -39,4 +41,5 @@ public partial class dir1_TPO_Co_ordinator_Default : System.Web.UI.Page
             Response.Write("error:" + ex.ToString());
         }
     }
+
 }

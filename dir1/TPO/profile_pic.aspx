@@ -9,10 +9,15 @@
 				<link href="../../assets/demo/demo3/base/style.bundle.css" rel="stylesheet" type="text/css" />
 
    <script type="text/css">
-        .img-circle {
-             border-radius: 50%;
-            }
+        .center-cropped {
+              width: 100px;
+              height: 100px;
+              background-position: center center;
+              background-repeat: no-repeat;
+              overflow: hidden;
+         }
     </script>
+
 <script>
   var loadFile = function(event) {
     var reader = new FileReader();
@@ -43,7 +48,7 @@
 							
 							<div class="form-group m-form__group row">
 								<div class="col-3">
-                               <center><img class="img-circle" id="imgview" height="180" width="180"/></center> 
+                               <center><img class="center-cropped" id="imgview" style="border-radius:50%;height:100px;width:100px; position: relative;"/></center> 
 
 								</div>
 							</div>
@@ -55,7 +60,7 @@
 							</div>
                             <div class="form-group m-form__group row">
 								<div class="col-3">
-							    <center><asp:Button ID="btnsubmit" runat="server" Text="Submit" class="btn btn-accent m-btn m-btn--air m-btn--custom" OnClick="btnsubmit_Click"/><br /></center>
+							    <center><asp:Button ID="btnsubmit" runat="server" Text="Submit" class="btn btn-accent m-btn m-btn--air m-btn--custom" OnClick="btnsubmit_Click"/>&nbsp;<button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button><br /></center>
 
 								</div>
 							</div>

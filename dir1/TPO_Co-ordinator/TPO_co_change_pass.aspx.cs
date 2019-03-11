@@ -36,7 +36,7 @@ public partial class dir1_Admin_Default : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@co_pwd", txtcpass.Text);
                 cmd.ExecuteNonQuery();
                 Response.Write("<script>alert('Password Successfully Change')</script>");
-                Response.Redirect("TPO-co_change_pass.aspx");
+                Response.Redirect("TPO_co_change_pass.aspx");
 
                 con.Close();
             }

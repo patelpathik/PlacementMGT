@@ -158,6 +158,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="tab-content">
                     <div class="tab-pane active" id="m_user_profile_tab_1">
                         <form class="m-form m-form--fit m-form--label-align-right" runat="server">

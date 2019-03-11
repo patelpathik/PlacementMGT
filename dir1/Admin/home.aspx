@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-     <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             //alert("hi");
@@ -144,169 +144,19 @@
 					</ul>
 				</div>
 			</div>
+
+
+
+
 			<div class="tab-content">
 				<div class="tab-pane active" id="m_user_profile_tab_1">
 					<form class="m-form m-form--fit m-form--label-align-right" runat="server">
 						<div class="m-portlet__body">
 						
-							<div class="row">
-                                <div class="col-xl-1">
-                                  </div>
-  <div class="col-xl-3">
-    <!--begin:: Widgets/Announcements 2-->
-<div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<h3 class="m-portlet__head-text">
-
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div class="m-portlet__body">
-		<!--begin::Widget 7-->
-		<div class="m-widget7 m-widget7--skin-dark">
-			<div class="m-widget7__button">				    	 
-				<a class="m-btn m-btn--pill btn btn-accent" href="#" role="button">Students</a>
-			</div>
-		</div>
-		<!--end::Widget 7--> 
-	</div>
-</div>
-      </div>
-<!--end:: Widgets/Announcements 2-->  
-                                  <div class="col-xl-3">
-
-  <!--begin:: Widgets/Announcements 3-->
-<div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<h3 class="m-portlet__head-text">
-
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div class="m-portlet__body">
-		<!--begin::Widget 7-->
-		<div class="m-widget7 m-widget7--skin-dark">
-			<div class="m-widget7__button">				    	 
-				<a class="m-btn m-btn--pill btn btn-accent" href="#" role="button">Block Students</a>
-			</div>
-		</div>
-		<!--end::Widget 7--> 
-	</div>
-</div>
-      </div>
-<!--end:: Widgets/Announcements 3-->
-                              <div class="col-xl-3">
-
-                              <!--begin:: Widgets/Announcements 4-->
-<div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<h3 class="m-portlet__head-text">
-
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div class="m-portlet__body">
-		<!--begin::Widget 7-->
-		<div class="m-widget7 m-widget7--skin-dark">
-			<div class="m-widget7__button">				    	 
-				<a class="m-btn m-btn--pill btn btn-accent" href="#" role="button">TPO</a>
-			</div>
-		</div>
-		<!--end::Widget 7--> 
-	</div>
-</div>
-      </div>
-<!--end:: Widgets/Announcements 4--><br />
-   <div class="col-xl-2">
-     </div>
-     <div class="col-xl-1">
-     </div>
-                          <div class="col-xl-3">
-
-                          <!--begin:: Widgets/Announcements 5-->
-<div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<h3 class="m-portlet__head-text">
-
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div class="m-portlet__body">
-		<!--begin::Widget 7-->
-		<div class="m-widget7 m-widget7--skin-dark">
-			<div class="m-widget7__button">				    	 
-				<a class="m-btn m-btn--pill btn btn-accent" href="#" role="button">TPC Co-ordinator</a>
-			</div>
-		</div>
-		<!--end::Widget 7--> 
-	</div>
-</div>
-      </div>
-<!--end:: Widgets/Announcements 5-->
-                          <div class="col-xl-3">
-
-                          <!--begin:: Widgets/Announcements 6-->
-<div class="m-portlet m--bg-danger m-portlet--bordered-semi m-portlet--skin-dark m-portlet--full-height ">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<h3 class="m-portlet__head-text">
-
-				</h3>
-			</div>
-		</div>
-	</div>
-	<div class="m-portlet__body">
-		<!--begin::Widget 7-->
-		<div class="m-widget7 m-widget7--skin-dark">
-			<div class="m-widget7__button">				    	 
-				<a class="m-btn m-btn--pill btn btn-accent" href="#" role="button">Company</a>
-			</div>
-		</div>
-		<!--end::Widget 7--> 
-	</div>
-</div>
-      </div>
-<!--end:: Widgets/Announcements 6-->
- 
-</div>
-                            
 							
-					    </div>
-						<div class="m-portlet__foot m-portlet__foot--fit" id="btn_def">
-							<div class="m-form__actions">
-                                <br />
-								<div class="row">
-                                    
-									<div class="col-2">
-									</div>
-									<div class="col-7">
-
-
-										</div>
-								</div>
-							</div>
-						</div>
-                        <br />
-
-
-			<div class="m-portlet__foot m-portlet__foot--fit">
-
-                </div>
-
-					</form>
+           <h2>Dashboard</h2>
+    </div>
+	</form>
 				</div>
 
 
@@ -320,13 +170,14 @@
 						<table class="table">
 								 <thead class="stu_th">
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>College ID</th>
-                        <th>Email</th>
-                        <th>Branch</th>
-                        <th>Semester</th>
-                        <th>View Profile</th>
+                        <td class="m-widget11__label">#</td>
+                        <td class="m-widget11__change">Name</td>
+                        <td class="m-widget11__change">College ID</td>
+                        <td class="m-widget11__change">Email</td>
+                        <td class="m-widget11__change">Branch</td>
+                        <td class="m-widget11__change">Semester</td>
+                        <td class="m-widget11__change">View Profile</td>
+                        <td class="m-widget11__change">Update Profile</td>
                     </tr>
                 </thead>
                 <tbody id="stu_tbody3"></tbody>

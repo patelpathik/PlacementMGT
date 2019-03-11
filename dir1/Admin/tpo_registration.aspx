@@ -38,15 +38,17 @@
             $("#stu_tbody").fadeIn(1000);
         }
         function update(x) {
-            var temp = "load_data.aspx?req=tpo&id=" + x;
+            var temp = "load_data.aspx?req=tpo1&id=" + x;
             alert(temp);
             $.ajax({
                 method: "GET",
                 url:temp,
                 success: function (data) {
+                    alert(data);
                     data = data.substring(0, data.indexOf(":"));
-                    //alert(data);
+                    alert(data);
                     var data_all = data.split(",");
+                    alert(data_all);
                     var id = data_all[0];
                     var tponame = data_all[1];
                     var tpoemail = data_all[2];
@@ -68,7 +70,7 @@
                     document.getElementById("tpoemail").value = tpoemail;
                     document.getElementById("tpomob").value = tpomob;
                     document.getElementById("tpopro").value = tpopro;
-                    document.getElementById("tpoquali").value = tpquali;
+                    document.getElementById("tpoquali").value = tpoquali;
 
                 }
             });
@@ -93,7 +95,7 @@
             var tpoquali = document.getElementById("tpoquali").value;
             var tid = document.getElementById("tpo_id").value;
 
-            var temp = "load_data.aspx?update=tpo&tid=" + tid + "&ttoname=" + tponame + "&tpoemail=" + tpoemail + "&tpomob=" + tpomob + "&tpopro=" + tpopro + "&tpoquali=" + tpoquali;
+            var temp = "load_data.aspx?update=tpo&tid=" + tid + "&tponame=" + tponame + "&tpoemail=" + tpoemail + "&tpomob=" + tpomob + "&tpopro=" + tpopro + "&tpoquali=" + tpoquali;
             $.ajax({
                 method: "GET",
                 url: temp,

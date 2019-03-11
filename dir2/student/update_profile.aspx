@@ -1,6 +1,48 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir2/student/student.master" AutoEventWireup="true" CodeFile="update_profile.aspx.cs" Inherits="dir2_student_Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    </style>
+
+
 
       <div class="m-subheader ">
 	<div class="d-flex align-items-center">
@@ -31,11 +73,14 @@
                         <asp:Label ID="lblname" class="m-card-profile__name" runat="server" Text=""></asp:Label>
 
                         <asp:Label ID="lblemail" class="m-card-profile__email m-link" runat="server" Text=""></asp:Label>
-					</div>
-				</div>	
-				
+                    
 
+					</div>
+                    
+            	</div>
 				<div class="m-portlet__body-separator"></div>
+               <center><button id="myBtn" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Update Profile pic</button></center>
+                				<div class="m-portlet__body-separator"></div>
 
 				
 			</div>			
@@ -203,15 +248,90 @@
 									</div>
 								</div>
 							</div><br /><br />
+
+
+                  </div>
+
+            <div id="myModal" class="modal">
+
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Some text in the Modal..</p>
+                          <div class="form-group m-form__group row">
+								<div class="col-3">
+                               <center><img class="img-circle" id="imgview" height="180" width="180"/></center> 
+
+								</div>
+							</div>
+							<div class="form-group m-form__group row">
+								<div class="col-3">
+                                        <center><asp:FileUpload ID="FileUpload2"  runat="server"  onchange="loadFile(event)" /></center>
+
+								</div>
+							</div>
+                            <div class="form-group m-form__group row">
+								<div class="col-3">
+							    <center><asp:Button ID="btnsubmit" runat="server" Text="Upload" class="btn btn-accent m-btn m-btn--air m-btn--custom" /><br /></center>
+
+								</div>
+							</div>
+                    </div>
+
+                    </div>
+
+
 	          </form>
 				</div>
 				
 			</div>
 		</div>
 	</div>
+     <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  
+
+</div>
 
 
+     <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+    <script>
+  var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('imgview');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+</script>
 
 
 
