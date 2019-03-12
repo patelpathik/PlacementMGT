@@ -220,6 +220,7 @@
 								<label for="example-text-input" class="col-2 col-form-label">CPI</label>
 								<div class="col-7">
                                     <asp:TextBox ID="txtcpi" class="form-control m-input" runat="server" ></asp:TextBox>
+                                    <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="txtcpi" MinimumValue="0" MaximumValue="10" ForeColor="Red" text=" * Invalid CPI" Display="Dynamic"/>							</div>
 								</div>
                                 <div class="col-3">
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="red" runat="server" ErrorMessage=" * CPI Require" ControlToValidate="txtcpi"></asp:RequiredFieldValidator>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/Admin/dashboard.master" AutoEventWireup="true" CodeFile="notice.aspx.cs" Inherits="dir1_TPO_Co_ordinator_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/TPO/dashboard.master" AutoEventWireup="true" CodeFile="notice.aspx.cs" Inherits="dir1_TPO_Co_ordinator_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <script type="text/javascript" src="../../assets/js/jquery.min.js"></script>
@@ -99,7 +99,7 @@
             });
         }
         function do_delete(x) {
-            var temp = "load_data.aspx?delete=notice&nid=" + x;
+            var temp = "../Admin/load_data.aspx?delete=notice&nid=" + x;
             alert(temp);
             $.ajax({
                 method: "GET",
@@ -114,7 +114,6 @@
 
 
 
-    	<div id="pat1"></div>
 
 <!-- END: Subheader -->		        
     <div class="m-content">
@@ -193,63 +192,7 @@
 
 							</div>
 
-                            <div class="form-group m-form__group row">
-								<label for="example-text-input" class="col-2 col-form-label">Is Placement Drive?</label>
-								<div class="col-10">
-                                    <span class="m-switch m-switch--outline m-switch--icon-check m-switch--brand">
-							            <label>
-							                <asp:CheckBox ID="cbplacement" runat="server" OnCheckedChanged="cbplacement_CheckedChanged" AutoPostBack="True" />
-							            <span></span>
-							            </label>
-							        </span>
-                                </div>
-							</div>
-                            
-                            <div class="form-group m-form__group row" runat="server">
-								<label for="example-text-input" class="col-2 col-form-label"><asp:Label ID="Label1" runat="server" Text="Package"></asp:Label></label>
-								<div class="col-7">
-                                    <asp:TextBox ID="txtpk" class="form-control m-input" runat="server"></asp:TextBox>
-                                </div>
-                                <div class="col-3">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="txtpk" runat="server" ErrorMessage="* Package is Required"></asp:RequiredFieldValidator>								
-                                    </div>
-							</div>
-                            <div class="form-group m-form__group row" runat="server"><label for="example-text-input" class="col-2 col-form-label"><asp:Label ID="Label2" runat="server" Text="Event Date"></asp:Label></label>
-								<div class="col-7">
-                                    <asp:TextBox ID="txtedat" clss="form-control m-input" Height="40px" runat="server" TextMode="Date"></asp:TextBox><asp:Label ID="Label6" runat="server" Text="[MM/DD/YYYY]"></asp:Label>
-                                </div>
-                                <div class="col-3">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtedat" runat="server" ErrorMessage="* Date is Required"></asp:RequiredFieldValidator>								
-                                    </div>
-							</div>
-                            <div class="form-group m-form__group row" runat="server">
-								<label for="example-text-input" class="col-2 col-form-label"><asp:Label ID="Label3" runat="server" Text="Event Time"></asp:Label></label>
-								<div class="col-7">
-                                    <asp:TextBox ID="txtetime" class="form-control m-input" runat="server"></asp:TextBox>
-                                </div>
-                                <div class="col-3">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="txtetime" runat="server" ErrorMessage="* Time is Required"></asp:RequiredFieldValidator>								
-                                    </div>
-							</div>
-                            <div class="form-group m-form__group row" runat="server">
-								<label for="example-text-input" class="col-2 col-form-label"><asp:Label ID="Label4" runat="server" Text="Location"></asp:Label></label>
-								<div class="col-7">
-                                    <asp:TextBox ID="txtloc" class="form-control m-input" runat="server"></asp:TextBox>
-                                </div>
-                                <div class="col-3">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" ControlToValidate="txtloc" runat="server" ErrorMessage="* Location is Required"></asp:RequiredFieldValidator>								
-                                    </div>
-							</div>
-                            <div class="form-group m-form__group row" runat="server">
-								<label for="example-text-input" class="col-2 col-form-label"><asp:Label ID="Label5" runat="server" Text="Technology/Requirement"></asp:Label></label>
-								<div class="col-7">
-                                    <asp:TextBox ID="txttech" class="form-control m-input" runat="server"></asp:TextBox>
-                                </div>
-                                <div class="col-3">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" ControlToValidate="txttech" runat="server" ErrorMessage="* Requirement is Required"></asp:RequiredFieldValidator>								
-                                    </div>
-							</div>
-							
+
 						
 
 						</div>
@@ -289,10 +232,9 @@
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
-                                                            <td class="m-widget11__label">#</td>
-                                                            <td class="m-widget11__sales">Title</td>
-                                                            <td class="m-widget11__change">Decription</td>
-                                                            <td class="m-widget11__app">File</td>
+                                                            <td class="m-widget11__app">#</td>
+                                                            <td class="m-widget11__app">Title</td>
+                                                            <td class="m-widget11__app">Decription</td>
                                                             <td class="m-widget11__app">Update</td>
                                                         </tr>
                                                     </thead>
@@ -310,6 +252,7 @@
                     </div>
 
 
+                    	<div id="pat1"></div>
 
 
                 <div class="tab-pane " id="m_user_profile_tab_3">
@@ -319,7 +262,7 @@
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-2 col-form-label">Title</label>
 								<div class="col-7">
-                                    <input ID="ntile" class="form-control m-input" />
+                                    <input ID="ntitle" class="form-control m-input" />
                             </div>
 							</div>
 							<div class="form-group m-form__group row">
@@ -328,13 +271,8 @@
                                     <input ID="ndes" class="form-control m-input" />
                                  </div>
 							</div>
-							<div class="form-group m-form__group row">
-								<label for="example-text-input" class="col-2 col-form-label">Email ID</label>
-								<div class="col-7">
-                                    <input ID="em" class="form-control m-input" type="email" />
-								</div>
-							</div>
-							</div>
+							
+						</div>
 						<div class="m-portlet__foot m-portlet__foot--fit">
 							<div class="m-form__actions">
 								<div class="row">

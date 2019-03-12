@@ -77,6 +77,11 @@
 							Create Student Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
+                        <br />
+                        <a class="txt2" href="Home.aspx">
+							Home Page
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
 					</div>
 				</form>
 			</div>
