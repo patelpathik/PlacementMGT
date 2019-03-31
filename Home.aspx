@@ -17,7 +17,7 @@
             var dis = document.getElementById("pref_v").value;
             //alert(dis);
             var temp = "dir2/student/load_data.aspx?qs=notice&dis="+dis;
-            alert(temp);
+            //alert(temp);
             document.getElementById("stu_tbody").innerHTML = "";
             //alert(temp);
             $.ajax({
@@ -38,6 +38,38 @@
                 url:slider_url,
                 success: function (data) {
                     $("#slider_body").html(data);
+
+
+
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("dot");
+                        if (n > slides.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = slides.length }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        dots[slideIndex - 1].className += " active";
+                    }
+
+
+
                 }
             });
         }
@@ -78,6 +110,11 @@
         }
     </script>
     <style type="text/css">
+         * {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
 
 /* Slideshow container */
 .slideshow-container {
@@ -186,8 +223,51 @@
        <input type="hidden" id="pref_v" value="today" />
 	
 	<div class="m-portlet__body">
-		<div class="tab-content" id="slider_body">
-		</div>
+		<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 5</div>
+      <asp:Image ID="Image1" runat="server" style="width:100%" height="400" />
+    <div class="text"><asp:Label ID="Label1" runat="server" Text=""></asp:Label></div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 5</div>
+      <asp:Image ID="Image2" runat="server" style="width:100%" height="400" />
+    <div class="text"><asp:Label ID="Label2" runat="server" Text=""></asp:Label></div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 5</div>
+      <asp:Image ID="Image3" runat="server" style="width:100%" height="400" />
+    <div class="text"><asp:Label ID="Label3" runat="server" Text=""></asp:Label></div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 5</div>
+      <asp:Image ID="Image4" runat="server" style="width:100%" height="400" />
+    <div class="text"><asp:Label ID="Label4" runat="server" Text=""></asp:Label></div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext">5 / 5</div>
+      <asp:Image ID="Image5" runat="server" style="width:100%" height="400" />
+    <div class="text"><asp:Label ID="Label5" runat="server" Text=""></asp:Label></div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+
+</div>
 	</div>
 </div>
 

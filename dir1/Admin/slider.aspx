@@ -2,10 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
+    <script type="text/css">
+        .img-circle {
+             border-radius: 15%;
+            }
+    </script>
+
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="m-subheader__title ">Branch</h3>			
+                <h3 class="m-subheader__title ">Slider</h3>			
             </div>
             <div>
                 <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
@@ -30,10 +36,7 @@
                             </li>
                             <li class="nav-item m-tabs__item" id="l_two">
                                 <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">Add Slider Images</a>
-                            </li>
-                            <li class="nav-item m-tabs__item" id="l_upd" style="display:none;">
-                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">Delete Slider Image</a>
-                            </li>
+                            </li>s
                         </ul>
                     </div>
                     <div class="m-portlet__head-tools">
@@ -52,39 +55,108 @@
                         <form class="m-form m-form--fit m-form--label-align-right" runat="server">
                             <div class="m-portlet__body">
                                 <div class="form-group m-form__group m--margin-top-10 m--hide">
-                                    <div class="alert m-alert m-alert--default" role="alert">
-                                        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                                    </div>
+
                                 </div>
                                  <div class="form-group m-form__group row" runat="server">
-                                    <label for="example-text-input" class="col-2 col-form-label">Event Name</label>
-                                    <div class="col-7">
-                                        <asp:TextBox ID="txtname" class="form-control m-input" runat="server"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtname" runat="server" ErrorMessage="* Enter event name"></asp:RequiredFieldValidator>
+                                    <div class="col-3">
+                                        <asp:Image ID="Image1" runat="server" Height="130" Width="270" />
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:Image ID="Image2" runat="server" Height="130" Width="270" />
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:Image ID="Image3" runat="server" Height="130" Width="270" />
                                     </div>
                                 </div>
                                 <div class="form-group m-form__group row" runat="server">
-                                    <label for="example-text-input" class="col-2 col-form-label">Choose Image File</label>
-                                    <div class="col-7">
-                                        <asp:FileUpload ID="FileUpload"  class="form-control m-input" runat="server" />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="FileUpload" runat="server" ErrorMessage="* Select File"></asp:RequiredFieldValidator>
+                                    <div class="col-3">
+                                        <asp:TextBox ID="txt1" class="form-control m-input" runat="server" placeholder="Title"></asp:TextBox>
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:TextBox ID="txt2" class="form-control m-input" runat="server" placeholder="Title"></asp:TextBox>
+                                    </div>
+                                    <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:TextBox ID="txt3" class="form-control m-input" runat="server" placeholder="Title"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <div class="col-3">
+                                        <asp:FileUpload ID="fl1" class="form-control m-input" runat="server" />
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:FileUpload ID="fl2" class="form-control m-input" runat="server" />
+                                    </div>
+                                    <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:FileUpload ID="fl3" class="form-control m-input" runat="server" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <div class="col-3"><center>
+                                       <asp:Button ID="btnupd1" class="btn btn-accent m-btn m-btn--air m-btn--custom" runat="server" Text="Add" OnClick="btnupd1_Click"/> </center>
+                                     </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3"><center>
+                                         <asp:Button ID="btnupd2" class="btn btn-accent m-btn m-btn--air m-btn--custom" runat="server" Text="Add" OnClick="btnupd2_Click"/> </center>
+                                    </div>
+                                    <div class="col-1"></div>
+                                     <div class="col-3"><center>
+                                        <asp:Button ID="btnupd3" class="btn btn-accent m-btn m-btn--air m-btn--custom" runat="server" Text="Add" OnClick="btnupd3_Click"/> </center>
+                                     </div>
+                                </div>
+
+
+
+                                 <div class="form-group m-form__group row" runat="server">
+                                    <div class="col-3">
+                                        <asp:Image ID="Image4" runat="server" Height="130" Width="270" />
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:Image ID="Image5" runat="server" Height="130" Width="270" />
+                                    </div>
+                                     <div class="col-1"></div>
+                                    
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <div class="col-3">
+                                        <asp:TextBox ID="txt4" class="form-control m-input" runat="server" placeholder="Title"></asp:TextBox>
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:TextBox ID="txt5" class="form-control m-input" runat="server" placeholder="Title"></asp:TextBox>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <div class="col-3">
+                                        <asp:FileUpload ID="fl4" class="form-control m-input" runat="server" />
+                                    </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3">
+                                        <asp:FileUpload ID="fl5" class="form-control m-input" runat="server" />
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group m-form__group row" runat="server">
+                                    <div class="col-3"><center>
+                                       <asp:Button ID="btnupd4" class="btn btn-accent m-btn m-btn--air m-btn--custom" runat="server" Text="Add" OnClick="btnupd4_Click"/> </center>
+                                     </div>
+                                     <div class="col-1"></div>
+                                     <div class="col-3"><center>
+                                         <asp:Button ID="btnupd5" class="btn btn-accent m-btn m-btn--air m-btn--custom" runat="server" Text="Add" OnClick="btnupd5_Click"/> </center>
                                     </div>
                                 </div>
                             </div>
                             <div class="m-portlet__foot m-portlet__foot--fit">
-                                <div class="m-form__actions">
-                                <br />
-                                    <div class="row">
-                                        <div class="col-2">
-                                        </div>
-                                        <div class="col-7">
-                                            <asp:Button ID="btnsubmit" class="btn btn-accent m-btn m-btn--air m-btn--custom" runat="server" Text="Add" OnClick="btnsubmit_Click" /> &nbsp;&nbsp;
-                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
-                            <br />
+                            <br /><br />
                             <div class="m-portlet__foot m-portlet__foot--fit">
                             </div>
                         </form>

@@ -6,7 +6,68 @@
 <head runat="server">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	x=1;
+	function fun()
+		{
+			var divv=document.getElementById("div1");
+			var element1=document.createElement("input");  
+			//create input element
+			var idattribute=document.createAttribute("id");
+			idattribute.value="img"+x;
+			var typrattribute=document.createAttribute("type");
+			typrattribute.value="file";
+			var valueattribute=document.createAttribute("name");
+			valueattribute.value="pic"+x;
+			var st=document.createAttribute("style");
+			
+			element1.setAttributeNode(valueattribute);
+			element1.setAttributeNode(typrattribute);
+			element1.setAttributeNode(idattribute);
+			divv.appendChild(element1);
+			//apend child node
 
+			//div1.setAttribute("style","display:block;height:1000px;width:150px;")
+			div1.setAttribute("style","margin-right:1000px;")
+			//set style to element
+
+
+			var element2=document.createElement("input"); 
+			 //create a button elements
+			var i=document.createAttribute("type");      
+			i.value="button";
+			var q=document.createAttribute("id");
+			q.value="bt"+x;
+			var v=document.createAttribute("value");
+			v.value="@";
+			var b=document.createAttribute("onclick")
+			b.value="fun2(this)"
+			element2.setAttributeNode(b);
+			element2.setAttributeNode(q);
+			element2.setAttributeNode(i);
+			element2.setAttributeNode(v);
+			divv.appendChild(element2);
+
+
+			x=x+1;
+		}	
+
+		function fun2(x) {
+
+			var divv=document.getElementById("div1")
+			alert(x.id);
+			val=x.id;
+		var j=	val.substring(2,4);
+		alert(j);
+		var txt=document.getElementById("txt"+j);
+		divv.removeChild(txt);
+
+			divv.removeChild(x);    //remove child node
+
+		
+			//divv.removeChild(idattribute);
+		}
+	</script>
     <script type="text/javascript">
         var slideIndex = 1;
         showSlides(slideIndex);
@@ -39,7 +100,10 @@
     </script>
 
     <style type="text/css">
-        {box-sizing:border-box}
+        * {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
@@ -144,18 +208,18 @@
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="img/Mega%20Placement_1.jpg" style="width:100%" height="400"/>
+      <asp:Image ID="Image1" runat="server" style="width:100%" height="400" />
     <div class="text">Mega Placement</div>
   </div>
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="img/GIH2019_2.jpg" style="width:100%" height="400">
+      <asp:Image ID="Image2" runat="server" style="width:100%" height="400" />
     <div class="text">Hackthon</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="img/Duo%20programme.jpg" style="width:100%" height="400">
+      <asp:Image ID="Image3" runat="server" style="width:100%" height="400" />
     <div class="text">Duo Programme</div>
   </div>
 
@@ -171,6 +235,19 @@
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
 </div>
+
+
+        
+
+<a href="#" onclick="fun()" >add content</a>
+<input type="button" value="@" >
+<div id="div1" >
+	
+</div>
+
+        <asp:Panel ID="pnlQuestions" runat="server" Width="100%">
+</asp:Panel>
+
     </form>
 </body>
 </html>

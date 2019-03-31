@@ -3,25 +3,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <script type="text/javascript" src="../../jquery.min.js"></script>
-
-    <script type="text/javascript">
+     <script type="text/javascript">
         $(document).ready(function () {
-            load_data(); //1st time run
-
-            $("#l_one").click(function () {
-                $("#m_user_profile_tab_1").show();
-                $("#m_user_profile_tab_2").hide();
-                $("#m_user_profile_tab_3").hide();
-            });
-
-            $("#l_two").click(function () {
-                $("#m_user_profile_tab_1").hide();
-                $("#m_user_profile_tab_2").show();
-                $("#m_user_profile_tab_3").hide();
-            });
+            //alert("hi");
+            load_data();
         });
         //setInterval(load_data, 3000);
-
         function load_data() {
             $("#stu_tbody").fadeOut(1);
             var temp = "load_data.aspx?req=branch";
@@ -31,7 +18,7 @@
             $.ajax({
                 method: "GET",
                 url: temp,
-                success: function(data) {
+                success: function (data) {
                     $("#stu_tbody").html(data);
                 }
             });
@@ -39,7 +26,7 @@
         }
         function update(x) {
             var temp = "load_data.aspx?req=branch1&id=" + x;
-            // alert(temp);
+            alert(temp);
             $.ajax({
                 method: "GET",
                 url:temp,
@@ -52,67 +39,34 @@
                     var id = data_all[0];
                     var name = data_all[1];
                     var sname = data_all[2];
+                    alert(id+":"+name+":"+sname);
                     document.getElementById("pat1").innerHTML = "<input type='hidden' id='branch_id' value='" + id + "'>";
                     //$("#m_user_profile_tab_1").show();
                     //$("#m_user_profile_tab_2").fadeOut();
                     $("#l_one").hide();
                     $("#l_two").hide();
                     $("#l_upd").show();
+
                     $("#m_user_profile_tab_1").hide();
                     $("#m_user_profile_tab_2").hide();
                     $("#m_user_profile_tab_3").show();
-
-                    document.getElementById("bfn").value = name;
-                    document.getElementById("bsn").value = sname;
                 }
             });
         }
-        function upd_rev() {                //cancel
+        function upd_rev() {
             $("#l_one").show();
             $("#l_two").show();
             $("#l_upd").hide();
 
-            $("#l_two").click();
+            $("one").click();
 
-            //$("#m_user_profile_tab_1").show();
-            //$("#m_user_profile_tab_2").hide();
+            $("#m_user_profile_tab_2").hide();
             $("#m_user_profile_tab_3").hide();
         }
-        function do_update() {              //submit (update)
-            var bfn = document.getElementById("bfn").value;
-            var bsn = document.getElementById("bsn").value;
-            var bid = document.getElementById("branch_id").value;
+       
 
-            var temp = "load_data.aspx?update=branch&bid=" + bid + "&bfn=" + bfn + "&bsn=" + bsn;
-            $.ajax({
-                method: "GET",
-                url: temp,
-                success: function(data){
-                    $("#l_one").show();
-                    $("#l_two").show();
-                    $("#l_upd").hide();
-
-                    $("#l_two").click();
-
-                    //$("#m_user_profile_tab_1").show();
-                    //$("#m_user_profile_tab_2").hide();
-                    $("#m_user_profile_tab_3").hide();
-                }
-            });
-        }
-        function do_delete(x)
-        {
-            var temp = "load_data.aspx?delete=branch&bid=" + x;
-            alert(temp);
-            $.ajax({
-                method: "GET",
-                url: temp,
-                success: function(data){
-                    load_data();
-                }
-            });
-        }
     </script>
+    
     <div id="pat1"></div>
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
@@ -141,7 +95,7 @@
                                 <a class="nav-link m-tabs__link active" id="one" data-toggle="tab" href="#m_user_profile_tab_1" role="tab"><i class="flaticon-share m--hide"></i>Add Branch Data</a>
                             </li>
                             <li class="nav-item m-tabs__item" id="l_two">
-                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">View Branch Data</a>
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">Add Branch Data</a>
                             </li>
                             <li class="nav-item m-tabs__item" id="l_upd" style="display:none;">
                                 <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">Update Data</a>

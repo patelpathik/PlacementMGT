@@ -51,7 +51,7 @@ public partial class dir2_student_load_data : System.Web.UI.Page
             }
             else if(qs == "slider")
             {
-                String q1 = "select * from slider"; //change tablename
+                String q1 = "select * from slider";
                 SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
                 DataTable dt = new DataTable();
                 da1.Fill(dt);
@@ -60,13 +60,29 @@ public partial class dir2_student_load_data : System.Web.UI.Page
                 String btns = "";
                 for (int i = 0; i < count; i++)
                 {
-                    String src = dt.Rows[i][2].ToString(); //replace 1 with column no. which contains image source/path
-                    data += "<div class='mySlides fade'>< div class='numbertext'>" + i + "/" + (i + 1) + "</div><img src = '" + src + "' style='width:100%'></div>";
-                    btns += "<span class='dot' onclick='currentSlide("+(i+1)+")'></span>";
+                    String src = dt.Rows[i][2].ToString();
+                    int demo = i + 1;
+                    data += "<div class='mySlides fade'><div class='numbertext'>" + i + "/" + demo + "</div><img src = '" + src + "' style='width:100%'></div>";
+                    btns += "<span class='dot' onclick='currentSlide(" + demo + ")'></span>";
                 }
-                data += "<a class='prev' onclick='plusSlides(-1)'>&#10094;</a>< a class='next' onclick='plusSlides(1)'>&#10095;</a></div><br>";
+                data += "<a class='prev' onclick='plusSlides(-1)'>&#10094;</a><a class='next' onclick='plusSlides(1)'>&#10095;</a></div><br>";
                 data += "<div style='text - align:center'>" + btns + "</div>";
                 Response.Write(data);
+            }
+            else if(qs == "job")
+            {
+                String q1 = "select * from placement p, company c where p.com_id=c.com_id";
+                SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
+                DataTable dt = new DataTable();
+                da1.Fill(dt);
+                int count = dt.Rows.Count;
+                if (count != 0)
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        Response.Write("<tr><td>"+(i+1)+"</td><td>" + dt.Rows[i][10] + "</td><td>" + dt.Rows[i][2] + "</td><td>" + dt.Rows[i][3] + "</td><td>" + dt.Rows[i][4] + "</td><td>" + dt.Rows[i][5] + "</td><td>" + dt.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' id='" + dt.Rows[i][0].ToString() + "' onclick='apply(this.id);'>Apply</button></tr>");
+                    }
+                }
             }
         }
         catch(Exception e1)

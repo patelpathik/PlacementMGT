@@ -244,7 +244,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 			<li class="m-menu__item "  aria-haspopup="true"><a  href="Home.aspx" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Home</span></a></li>
              <li class="m-menu__item"  aria-haspopup="true"><a  href="notice.aspx" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Notice</span></a></li>
-             <li class="m-menu__item"  aria-haspopup="true"><a  href="###" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Job Notice</span></a></li>
+             <li class="m-menu__item"  aria-haspopup="true"><a  href="job.aspx" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text">Job Notice</span></a></li>
 
         </ul>
 	</div>
