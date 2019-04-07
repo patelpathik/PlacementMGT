@@ -53,6 +53,7 @@ public partial class Login : System.Web.UI.Page
         //txtuname.Text = query1;
         String id = txtuname.Text.ToUpper().ToString();
         string query1 = "select * from signup where sig_id_no = '" + id + "' AND pass = '" + txtpass.Text + "' ";
+        System.Diagnostics.Debug.Write(query1);
         SqlDataAdapter da1 = new SqlDataAdapter(query1, conn);
         DataTable dt1 = new DataTable();
         da1.Fill(dt1);
@@ -113,6 +114,6 @@ public partial class Login : System.Web.UI.Page
             Response.Redirect("dir2/company/update_profile.aspx");
         }
         Response.Write("<script>alert('Please input valid username or password '); </script>");
-
+        Response.Write("<script>alert('" + txtuname.Text + ":" + txtpass.Text + ":" + query1 + "');</script>");
     }
 }

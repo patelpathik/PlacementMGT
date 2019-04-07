@@ -71,16 +71,95 @@ public partial class dir2_student_load_data : System.Web.UI.Page
             }
             else if(qs == "job")
             {
-                String q1 = "select * from placement p, company c where p.com_id=c.com_id";
+                String uid = Request.QueryString["userid"].ToString();
+                String qtemp = "select br_id from signup where sig_id='" + uid + "'";
+                //Response.Write("<h1>" + qtemp + "</h1>");
+                SqlDataAdapter datemp = new SqlDataAdapter(qtemp, con);
+                DataTable dttemp = new DataTable();
+                datemp.Fill(dttemp);
+
+                String br_id = dttemp.Rows[0][0].ToString();
+                //Response.Write("<h1>"+br_id+"</h1>");
+
+                String q1 = "select * from placement p, company c where p.com_id=c.com_id  AND p.plc_id NOT IN (select plc_id from job where stu_id='" + uid + "')";
+                //Response.Write("<h1>" + q1 + "</h1>");
                 SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
                 DataTable dt = new DataTable();
                 da1.Fill(dt);
                 int count = dt.Rows.Count;
+                //Response.Write("<h1>" + count + "</h1>");
+                int emptyflag = 0;
                 if (count != 0)
                 {
+                    int count11 = 0;
                     for (int i = 0; i < count; i++)
                     {
-                        Response.Write("<tr><td>"+(i+1)+"</td><td>" + dt.Rows[i][10] + "</td><td>" + dt.Rows[i][2] + "</td><td>" + dt.Rows[i][3] + "</td><td>" + dt.Rows[i][4] + "</td><td>" + dt.Rows[i][5] + "</td><td>" + dt.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' id='" + dt.Rows[i][0].ToString() + "' onclick='apply(this.id);'>Apply</button></tr>");
+                        String br_ids = dt.Rows[i][7].ToString();
+                        String[] br_arr = null;
+                        char[] splitchar = { ',' };
+                        int pos = -1;
+                        br_arr = br_ids.Split(splitchar);
+                        try
+                        {
+                            pos = Array.IndexOf(br_arr, br_id);
+                            if (pos > -1)
+                            {
+                                emptyflag = 1;
+                                count11++;
+                                Response.Write("<tr><td>" + count11 + "</td><td>" + dt.Rows[i][10] + "</td><td>" + dt.Rows[i][2] + "</td><td>" + dt.Rows[i][3] + "</td><td>" + dt.Rows[i][4] + "</td><td>" + dt.Rows[i][5] + "</td><td>" + dt.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' id='" + dt.Rows[i][0].ToString() + "' onclick='apply(this.id);'>Apply</button></tr>");
+                            }
+                        }
+                        catch (Exception e12) { }
+                    }
+                }
+                else
+                {
+                    emptyflag = 1;
+                    Response.Write("<tr><td colspan='8' align='center'><h1>No Entries</h1></td></tr>");
+                }
+                if (emptyflag == 0)
+                {
+                    Response.Write("<tr><td colspan='8' align='center'><h1>No Entries</h1></td></tr>");
+                }
+            }
+            else if (qs == "savejob")
+            {
+                String plc_id = Request.QueryString["plc_id"].ToString();
+                String user_id = Request.QueryString["userid"].ToString();
+
+                String q1 = "insert into job (plc_id,stu_id) values ('" + plc_id + "','" + user_id + "')";
+                SqlCommand cmd1 = new SqlCommand(q1,con);
+                cmd1.ExecuteNonQuery();
+
+                Response.Write("1");
+            }
+            else if (qs == "appliedjob")
+            {
+                string userid = Request.QueryString["userid"].ToString();
+                String q1 = "select * from job j, placement p,company c where p.com_id=c.com_id AND j.plc_id=p.plc_id AND stu_id='" + userid + "'";
+                //Response.Write("<h1>" + q1 + "</h1>");
+                SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
+                DataTable dt1 = new DataTable();
+                da1.Fill(dt1);
+                if(dt1.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        String status = "N/A";
+                        String stcode = dt1.Rows[i][13].ToString();
+                        if (stcode.Equals("-1")) {
+                            status = "Pending";
+                        }
+                        else if (stcode.Equals("0"))
+                        {
+                            status = "Rejected";
+                        }
+                        else if (stcode.Equals("1"))
+                        {
+                            status = "Accepted";
+                        }
+                        String data = "<tr><td>" + (i + 1) + "</td><td>" + dt1.Rows[i][15] + "</td><td>" + dt1.Rows[i][16] + "</td><td>" + dt1.Rows[i][17] + "</td><td>" + dt1.Rows[i][18] + "</td><td>" + dt1.Rows[i][10] + "</td><td>" + dt1.Rows[i][11] + "</td><td>" + status + "</td></tr>";
+                        Response.Write(data);
                     }
                 }
             }
