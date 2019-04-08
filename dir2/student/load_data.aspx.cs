@@ -146,7 +146,8 @@ public partial class dir2_student_load_data : System.Web.UI.Page
                     for (int i = 0; i < dt1.Rows.Count; i++)
                     {
                         String status = "N/A";
-                        String stcode = dt1.Rows[i][13].ToString();
+                        //String stcode = dt1.Rows[i][13].ToString();
+                        String stcode = dt1.Rows[i][4].ToString();
                         if (stcode.Equals("-1")) {
                             status = "Pending";
                         }

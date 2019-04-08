@@ -219,6 +219,52 @@ public partial class load_data : System.Web.UI.Page
                     }
                 }
             }
+            else if (qs == "job")
+            {
+                String sortby = Request.QueryString["sortby"].ToString();
+
+                String query1 = "select * from placement p,signup s, company c, job j where p.com_id=c.com_id AND p.plc_id=j.plc_id AND j.stu_id=s.sig_id AND j.status='" + sortby + "'";
+
+                SqlDataAdapter da = new SqlDataAdapter(query1, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    for(int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        String temp = "";
+                        if (dt.Rows[i][43].ToString().Equals("-1"))
+                        {
+                            temp = "<button type = 'button' class='btn btn-success btn-round' id='" + dt.Rows[i][39].ToString() + "' onclick='accept(this.id);'><i class='fa fa-check'></i></button>&nbsp;&nbsp;&nbsp;<button type = 'button' class='btn btn-danger btn-round' id='" + dt.Rows[i][39].ToString() + "' onclick='reject(this.id);'><i class='fa fa-times'></i></button>";
+                        }
+                        else if (dt.Rows[i][43].ToString().Equals("0"))
+                        {
+                            temp = "<button type = 'button' class='btn btn-success btn-round' id='" + dt.Rows[i][39].ToString() + "' onclick='accept(this.id);'><i class='fa fa-check'></i></button>";
+                        }
+                        else if (dt.Rows[i][43].ToString().Equals("1"))
+                        {
+                            temp = "<button type = 'button' class='btn btn-danger btn-round' id='" + dt.Rows[i][39].ToString() + "' onclick='reject(this.id);'><i class='fa fa-times'></i></button>";
+                        }
+
+                        String data = "";
+                        data = "<tr><td>" + (i + 1) + "</td><td>" + dt.Rows[i][31].ToString() + "<br>(" + dt.Rows[i][32].ToString() + ")</td><td>" + dt.Rows[i][2].ToString() + "</td><td>" + dt.Rows[i][3].ToString() + "</td><td>" + dt.Rows[i][4].ToString() + "</td><td>" + dt.Rows[i][6].ToString() + "<br>" + dt.Rows[i][5].ToString() + "</td><td>" + dt.Rows[i][11].ToString() + " (" + dt.Rows[i][10].ToString() + ")<br>" + dt.Rows[i][12].ToString() + "</td><td>" + temp + "</td></tr>";
+                        Response.Write(data);
+                    }
+                }
+                else
+                {
+                    Response.Write("<tr><td colspan='8' align='center'>No Entries</td></tr>");
+                }
+            }
+            else if (qs == "updjob")
+            {
+                String job_id = Request.QueryString["job_id"].ToString();
+                String status = Request.QueryString["status"].ToString();
+
+                String query1 = "update job set status='" + status + "' where job_id='" + job_id + "'";
+                SqlCommand up = new SqlCommand(query1, con);
+                up.ExecuteNonQuery();
+            }
         }
         catch (Exception e2)
         {
