@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir2/company/company.master" AutoEventWireup="true" CodeFile="PlacementResult.aspx.cs" Inherits="dir2_company_PlacementResult" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/TPO/dashboard.master" AutoEventWireup="true" CodeFile="job_verification.aspx.cs" Inherits="dir1_TPO_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -35,14 +35,33 @@
 		function load_data() {
 
 			var url = "";
-			var userid = $("#userid").val();
-			url = "load_data.aspx?tb=job&userid=" + userid;
+
+			url = "load_data.aspx?tb=job&sortby=-1";
 			console.log(url);
 			$.ajax({
 				method: "GET",
 				url: url,
 				success: function (data) {
 					$("#pending").html(data);
+				}
+			});
+			$("#stu_tbody").fadeIn(1000);
+
+			url = "load_data.aspx?tb=job&sortby=1";
+			$.ajax({
+				method: "GET",
+				url: url,
+				success: function (data) {
+					$("#accepted").html(data);
+				}
+			});
+
+			url = "load_data.aspx?tb=job&sortby=0";
+			$.ajax({
+				method: "GET",
+				url: url,
+				success: function (data) {
+					$("#rejected").html(data);
 				}
 			});
 		}
@@ -97,7 +116,19 @@
 								<li class="nav-item m-tabs__item" id="l_one">
 									<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
 										<i class="flaticon-share m--hide"></i>
-										Placement Result
+										Pending Verification
+									</a>
+								</li>
+								<li class="nav-item m-tabs__item" id="l_two">
+									<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
+										<i class="flaticon-share m--hide"></i>
+										Accepted
+									</a>
+								</li>
+								<li class="nav-item m-tabs__item" id="l_three">
+									<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">
+										<i class="flaticon-share m--hide"></i>
+										Rejected
 									</a>
 								</li>
 							</ul>
@@ -127,14 +158,73 @@
 														<tr>
 															<td class="m-widget11__label">#</td>
 															<td class="m-widget11__change">Name</td>
-															<td class="m-widget11__change">Contact</td>
-															<td class="m-widget11__app">Email</td>
-															<td class="m-widget11__sales">ID</td>
-                                                            <td class="m-widget11__change">View Profile</td>
+															<td class="m-widget11__app">Description</td>
+															<td class="m-widget11__sales">Package</td>
+															<td class="m-widget11__change">Location</td>
+															<td class="m-widget11__change">Date/Time</td>
+															<td class="m-widget11__change">Student</td>
 															<td class="m-widget11__change">Change Status</td>
 														</tr>
 													</thead>
 													<tbody id="pending"></tbody>
+												</table>
+												<!--end::Table-->
+											</div>
+										</div>
+										<!--end::Widget 11-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane active" id="m_user_profile_tab_2">
+							<div class="m-portlet__body">
+								<div class="tab-content">
+									<div class="tab-pane active" id="m_widget11_tab1_content">
+										<div class="m-widget11">
+											<div class="table-responsive">
+												<table class="table">
+													<thead>
+														<tr>
+															<td class="m-widget11__label">#</td>
+															<td class="m-widget11__change">Name</td>
+															<td class="m-widget11__app">Description</td>
+															<td class="m-widget11__sales">Package</td>
+															<td class="m-widget11__change">Location</td>
+															<td class="m-widget11__change">Date/Time</td>
+															<td class="m-widget11__change">Student</td>
+															<td class="m-widget11__change">Change Status</td>
+														</tr>
+													</thead>
+													<tbody id="accepted"></tbody>
+												</table>
+												<!--end::Table-->
+											</div>
+										</div>
+										<!--end::Widget 11-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane active" id="m_user_profile_tab_3">
+							<div class="m-portlet__body">
+								<div class="tab-content">
+									<div class="tab-pane active" id="m_widget11_tab1_content">
+										<div class="m-widget11">
+											<div class="table-responsive">
+												<table class="table">
+													<thead>
+														<tr>
+															<td class="m-widget11__label">#</td>
+															<td class="m-widget11__change">Name</td>
+															<td class="m-widget11__app">Description</td>
+															<td class="m-widget11__sales">Package</td>
+															<td class="m-widget11__change">Location</td>
+															<td class="m-widget11__change">Date/Time</td>
+															<td class="m-widget11__change">Student</td>
+															<td class="m-widget11__change">Change Status</td>
+														</tr>
+													</thead>
+													<tbody id="rejected"></tbody>
 												</table>
 												<!--end::Table-->
 											</div>

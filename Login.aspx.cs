@@ -111,7 +111,7 @@ public partial class Login : System.Web.UI.Page
             string temp = dt5.Rows[0][0].ToString();
             Session["userid"] = temp;
             Session["uname"] = dt5.Rows[0][1].ToString();
-            Response.Redirect("dir2/company/update_profile.aspx");
+            Response.Redirect("dir2/company/Home.aspx");
         }
         Response.Write("<script>alert('Please input valid username or password '); </script>");
         Response.Write("<script>alert('" + txtuname.Text + ":" + txtpass.Text + ":" + query1 + "');</script>");

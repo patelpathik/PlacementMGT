@@ -43,7 +43,7 @@ public partial class dir2_company_load_data : System.Web.UI.Page
                         {
                             status = "<button type = 'button' class='btn btn-danger btn-round' id='" + dt.Rows[i][0].ToString() + "' onclick='reject(this.id);'><i class='fa fa-times'></i></button>";
                         }
-                        String data = "<tr><td>" + (i + 1) + "</td><td>" + dt.Rows[i][6].ToString() + "</td><td>" + dt.Rows[i][9].ToString() + "</td><td>" + dt.Rows[i][8].ToString() + "</td><td>" + dt.Rows[i][2].ToString() + "</td><td>" + status + "</td></tr>";
+                        String data = "<tr><td>" + (i + 1) + "</td><td>" + dt.Rows[i][6].ToString() + "</td><td>" + dt.Rows[i][9].ToString() + "</td><td>" + dt.Rows[i][8].ToString() + "</td><td>" + dt.Rows[i][7].ToString() + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' onclick='window.top.location=\"view_profile.aspx?uid=\"+this.id;' id='" + dt.Rows[i][5].ToString() + "'><i class='la la-user'></i></button></td><td>" + status + "</td></tr>";
                         Response.Write(data);
                     }
                 }

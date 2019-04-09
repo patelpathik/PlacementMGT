@@ -80,46 +80,52 @@ public partial class dir2_student_load_data : System.Web.UI.Page
 
                 String br_id = dttemp.Rows[0][0].ToString();
                 //Response.Write("<h1>"+br_id+"</h1>");
-
-                String q1 = "select * from placement p, company c where p.com_id=c.com_id  AND p.plc_id NOT IN (select plc_id from job where stu_id='" + uid + "')";
-                //Response.Write("<h1>" + q1 + "</h1>");
-                SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
-                DataTable dt = new DataTable();
-                da1.Fill(dt);
-                int count = dt.Rows.Count;
-                //Response.Write("<h1>" + count + "</h1>");
-                int emptyflag = 0;
-                if (count != 0)
+                try
                 {
-                    int count11 = 0;
-                    for (int i = 0; i < count; i++)
+                    String q1 = "select * from placement p, company c where p.com_id=c.com_id  AND p.plc_id NOT IN (select plc_id from job where stu_id='" + uid + "')";
+                    //Response.Write("<h1>" + q1 + "</h1>");
+                    SqlDataAdapter da1 = new SqlDataAdapter(q1, con);
+                    DataTable dt = new DataTable();
+                    da1.Fill(dt);
+                    int count = dt.Rows.Count;
+                    //Response.Write("<h1>" + count + "</h1>");
+                    int emptyflag = 0;
+                    if (count != 0)
                     {
-                        String br_ids = dt.Rows[i][7].ToString();
-                        String[] br_arr = null;
-                        char[] splitchar = { ',' };
-                        int pos = -1;
-                        br_arr = br_ids.Split(splitchar);
-                        try
+                        int count11 = 0;
+                        for (int i = 0; i < count; i++)
                         {
-                            pos = Array.IndexOf(br_arr, br_id);
-                            if (pos > -1)
+                            String br_ids = dt.Rows[i][7].ToString();
+                            String[] br_arr = null;
+                            char[] splitchar = { ',' };
+                            int pos = -1;
+                            br_arr = br_ids.Split(splitchar);
+                            try
                             {
-                                emptyflag = 1;
-                                count11++;
-                                Response.Write("<tr><td>" + count11 + "</td><td>" + dt.Rows[i][10] + "</td><td>" + dt.Rows[i][2] + "</td><td>" + dt.Rows[i][3] + "</td><td>" + dt.Rows[i][4] + "</td><td>" + dt.Rows[i][5] + "</td><td>" + dt.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' id='" + dt.Rows[i][0].ToString() + "' onclick='apply(this.id);'>Apply</button></tr>");
+                                pos = Array.IndexOf(br_arr, br_id);
+                                if (pos > -1)
+                                {
+                                    emptyflag = 1;
+                                    count11++;
+                                    Response.Write("<tr><td>" + count11 + "</td><td>" + dt.Rows[i][10] + "</td><td>" + dt.Rows[i][2] + "</td><td>" + dt.Rows[i][3] + "</td><td>" + dt.Rows[i][4] + "</td><td>" + dt.Rows[i][5] + "</td><td>" + dt.Rows[i][6] + "</td><td><button class='btn m-btn--pill    btn-info m-btn m-btn--custom m-btn--label-brand m-btn--bolder' id='" + dt.Rows[i][0].ToString() + "' onclick='apply(this.id);'>Apply</button></tr>");
+                                }
                             }
+                            catch (Exception e12) { }
                         }
-                        catch (Exception e12) { }
+                    }
+                    else
+                    {
+                        emptyflag = 1;
+                        Response.Write("<tr><td colspan='8' align='center'><h1>No Entries</h1></td></tr>");
+                    }
+                    if (emptyflag == 0)
+                    {
+                        Response.Write("<tr><td colspan='8' align='center'><h1>No Entries</h1></td></tr>");
                     }
                 }
-                else
+                catch(Exception e11)
                 {
-                    emptyflag = 1;
-                    Response.Write("<tr><td colspan='8' align='center'><h1>No Entries</h1></td></tr>");
-                }
-                if (emptyflag == 0)
-                {
-                    Response.Write("<tr><td colspan='8' align='center'><h1>No Entries</h1></td></tr>");
+                    Response.Write("<script>console.log("+e11.Message+");</script>");
                 }
             }
             else if (qs == "savejob")

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/TPO/dashboard.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="dir1_TPO_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dir1/TPO_Co-ordinator/dashboard.master" AutoEventWireup="true" CodeFile="job_verification.aspx.cs" Inherits="dir1_TPO_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -35,8 +35,7 @@
 		function load_data() {
 
 			var url = "";
-
-			url = "load_data.aspx?tb=job&sortby=-1";
+			url = "../TPO/load_data.aspx?tb=job&sortby=-1";
 			console.log(url);
 			$.ajax({
 				method: "GET",
@@ -47,7 +46,7 @@
 			});
 			$("#stu_tbody").fadeIn(1000);
 
-			url = "load_data.aspx?tb=job&sortby=1";
+			url = "../TPO/load_data.aspx?tb=job&sortby=1";
 			$.ajax({
 				method: "GET",
 				url: url,
@@ -56,7 +55,7 @@
 				}
 			});
 
-			url = "load_data.aspx?tb=job&sortby=0";
+			url = "../TPO/load_data.aspx?tb=job&sortby=0";
 			$.ajax({
 				method: "GET",
 				url: url,
@@ -70,7 +69,7 @@
 			//console.log(userid);
 			console.log(job_id);
 
-			var url = "load_data.aspx?tb=updjob&job_id=" + job_id + "&status=1";
+			var url = "../TPO/load_data.aspx?tb=updjob&job_id=" + job_id + "&status=1";
 			//alert(url);
 			console.log(url);
 			$.ajax({
@@ -86,7 +85,7 @@
 			//console.log(userid);
 			console.log(job_id);
 
-			var url = "load_data.aspx?tb=updjob&job_id=" + job_id + "&status=0";
+			var url = "../TPO/load_data.aspx?tb=updjob&job_id=" + job_id + "&status=0";
 			//alert(url);
 			console.log(url);
 			$.ajax({
@@ -97,7 +96,7 @@
 				}
 			})
 		}
-	</script>
+    </script>
 
 
 
