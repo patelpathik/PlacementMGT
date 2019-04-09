@@ -247,7 +247,7 @@ public partial class load_data : System.Web.UI.Page
                         }
 
                         String data = "";
-                        data = "<tr><td>" + (i + 1) + "</td><td>" + dt.Rows[i][31].ToString() + "<br>(" + dt.Rows[i][32].ToString() + ")</td><td>" + dt.Rows[i][2].ToString() + "</td><td>" + dt.Rows[i][3].ToString() + "</td><td>" + dt.Rows[i][4].ToString() + "</td><td>" + dt.Rows[i][6].ToString() + "<br>" + dt.Rows[i][5].ToString() + "</td><td>" + dt.Rows[i][11].ToString() + " (" + dt.Rows[i][10].ToString() + ")<br>" + dt.Rows[i][12].ToString() + "</td><td>" + temp + "</td></tr>";
+                        data = "<tr><td>" + (i + 1) + "</td><td>" + dt.Rows[i][31].ToString() + "<br>(" + dt.Rows[i][32].ToString() + ")</td><td>" + dt.Rows[i][2].ToString() + "</td><td>" + dt.Rows[i][3].ToString() + "</td><td>" + dt.Rows[i][4].ToString() + "</td><td>" + dt.Rows[i][6].ToString() + "<br>" + dt.Rows[i][5].ToString() + "</td><td>" + dt.Rows[i][11].ToString() + " (" + dt.Rows[i][10].ToString() + ")<br>" + dt.Rows[i][12].ToString() + "<br> CPI : " + dt.Rows[i][27].ToString() + "</td><td>" + temp + "</td></tr>";
                         Response.Write(data);
                     }
                 }

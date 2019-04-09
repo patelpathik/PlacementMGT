@@ -80,8 +80,7 @@
                                                             <td class="m-widget11__sales">Title</td>
                                                             <td class="m-widget11__app">Description</td>
                                                             <td class="m-widget11__app">Download File</td>	
-                                                            <td class="m-widget11__change">Date</td>
-                                                            <td class="m-widget11__change">Time</td>					
+                                                          					
                                                         </tr>
                                                     </thead>
                                                     <tbody id="stu_tbody"></tbody>
